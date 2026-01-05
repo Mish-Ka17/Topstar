@@ -34,11 +34,11 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        // Валидация входных данных
-        $credentials = $request->validate([
-            'email'    => ['required', 'email'],
-            'password' => ['required', 'string'],
-        ]);
+      // Валидация входных данных
+      $credentials = $request->validate([
+        'email'    => ['required', 'email'],
+        'password' => ['required', 'string'],
+      ]);
 
         // Попытка аутентификации
         if (Auth::attempt($credentials)) {

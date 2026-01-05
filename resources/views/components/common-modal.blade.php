@@ -17,16 +17,16 @@
     <div class="relative w-full {{ $maxWidth }} bg-white rounded-lg shadow-xl p-6">
         {{-- header --}}
         @isset($title)
-            <div class="mb-4 text-lg font-semibold">
-                {{ $title }}
-            </div>
+          <div class="mb-4 text-lg font-semibold">
+            {{ $title }}
+          </div>
         @endisset
 
         {{-- body --}}
         @isset($content)
-            <div class="mb-6">
+          <div>
             {{ $content }}
-        </div>
+          </div>
         @endisset
     </div>
 </div>

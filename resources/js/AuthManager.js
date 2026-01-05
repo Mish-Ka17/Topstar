@@ -1,3 +1,5 @@
+import { mount as authMount } from '@vue-components/Auth/mount.js';
+
 const foundButtons = document.querySelectorAll('#auth-manager-status-actions-block-id button');
 
 if (foundButtons?.length) {
@@ -7,9 +9,10 @@ if (foundButtons?.length) {
             axios.post('/get-views/auth', { context })
             .then(({ data }) => {
                 console.warn('data=', data);
-                const target = document.querySelector('#auth-login-content');
+                const target = document.querySelector('#auth-modal-content');
                 if (target) {
                     target.innerHTML = data.html;
+                    authMount('target-for-vue-auth-component');
                 }
             })
             .catch((err) => {

@@ -17,7 +17,7 @@
     <div class="flex flex-row" id="auth-manager-status-actions-block-id">
         <div id="buttons" class="flex flex-row w-30 h-10 justify-center gap-1 p-2  bg-indigo-100">
             <button type="button" data-context="login" data-modal-open="auth" class="border rounded px-1 py-0.5 text-[10px] hover:bg-indigo-200 cursor-pointer">Войти</button>
-            <button type="button" data-context="register" data-modal-open="auth" class="border rounded px-1 py-0.5 text-[10px] hover:bg-indigo-200 cursor-pointer">Регистрация</button>
+            <button type="button" data-context="registration" data-modal-open="auth" class="border rounded px-1 py-0.5 text-[10px] hover:bg-indigo-200 cursor-pointer">Регистрация</button>
         </div>
     </div>
     @endunless
@@ -25,7 +25,7 @@
     @push('modals')
     <x-CommonModal id="auth">
         <x-slot name="content">
-            <div id="auth-login-content"></div>
+            <div id="auth-modal-content"></div>
         </x-slot>
     </x-CommonModal>
     @endpush

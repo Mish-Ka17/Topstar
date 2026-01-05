@@ -15,6 +15,14 @@ document.addEventListener('click', (e) => {
         document
             .getElementById(`modal-${name}`)
             ?.classList.add('hidden')
-            ?.classList.remove('flex')
+            // ?.classList.remove('flex')
     }
+})
+
+document.addEventListener('keyup', (e) => {
+  const modal = document.querySelector('#modal-auth');
+
+  if (e.code === 'Escape' && modal && !modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+  }
 })
