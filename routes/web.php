@@ -30,7 +30,7 @@ Route::get('admin/article/{article}', '\App\Http\Controllers\Admin\ArticleContro
 Route::middleware(['auth'])->group(function(){
 //
 });
-Route::post('createuser', 'App\Http\Controllers\UserController@register')->name('register');
+Route::post('register', 'App\Http\Controllers\UserController@register')->name('register');
 
 Route::post('login', 'App\Http\Controllers\UserController@login')->name('login');
 

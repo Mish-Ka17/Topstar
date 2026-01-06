@@ -5,9 +5,10 @@
             <label class="block text-sm font-medium mb-1">Поделитесь Вашим комментарием</label>
             <!-- <p class="italic text-xs">(для зарегистрированых пользователей)</p> -->
             @if(!isset($user))
-            <div class="flex bg-gray-50 border rounded-lg p-4 text-sm text-gray-600">
-                <div class="p-2">
-                    Чтобы оставить комментарий, пожалуйста, войдите или зарегистрируйтесь:
+            <div class="bg-gray-200 border rounded-lg p-4 text-sm text-gray-600">
+                <div class="flex p-2">
+                    <div class="p-2">Чтобы оставить комментарий, пожалуйста, войдите или зарегистрируйтесь:</div>
+                    <div><x-AuthManager.status/></div>
                 </div>
             </div>
             <br/>

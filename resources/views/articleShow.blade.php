@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section ('content')
     <x-breadcrumbs />
-    <article class="bg-gray-200 shadow-lg rounded-3xl p-6 sm:p-10 max-w-6xl mx-auto">
+    <article class="bg-gray-100 shadow-lg rounded-3xl p-6 sm:p-10 max-w-6xl mx-auto">
         <header class="mb-8 text-center">
             <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">{{ $title }}</h1>
             <p class="text-gray-500 italic">{{$country}}</p>
@@ -21,10 +21,7 @@
                 @if ($block['type'] === 'image')
                     <div class="float-{{$block['position']}} mr-7 my-3 ml-3
                         bg-grey rounded-2xl shadow-lg overflow-hidden transform transition
-                        hover:-translate-y-2 hover:shadow-2xl
-
-                        w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px]
-                        ">
+                        w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px]">
                         <img src="{{$block['src']}}" alt="" class="w-full h-auto">
                         @if(!$loop->first)
                             <p class="p-3 text-sm sm:text-base md:text-lg text-gray-500 italic text-center">{{$block['caption']}}</p>
