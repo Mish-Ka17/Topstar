@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
@@ -15,12 +17,12 @@ class UserController extends Controller
     //         'password'=>['required','confirmed'],
     //     ]); dd($data);
 
-        if($request->validate([
-            'name'=>['required','string','max:255'],
-            'email'=>['required','string','email','max:255','unique:users'],
-            'password'=>['required','string','max:8','confirmed'],
-        ]))
-        {
+         if($request->validate([
+             'name'=>['required','string','max:255'],
+             'email'=>['required','string','email','max:255','unique:users'],
+             'password'=>['required','string','max:8','confirmed'],
+         ]))
+         {
             $user=User::create($request->all());
 
             // Логиним сразу после регистрации
@@ -28,8 +30,8 @@ class UserController extends Controller
 
             return back();
             //return redirect()->route('home');//'view('main');)
-        };
-        return redirect('main');
+         };
+         return redirect('main');
     }
 
     public function login(Request $request)
@@ -40,20 +42,23 @@ class UserController extends Controller
         'password' => ['required', 'string'],
       ]);
 
-        // Попытка аутентификации
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            //dd(Auth::user());
+      // Попытка аутентификации
+      if (!Auth::attempt($credentials)) {
+        throw new ValidationException(
+          validator: \Validator::make([], []),
+          response: new JsonResponse([
+              'message' => 'The given data was invalid.',
+              'errors' => [
+                  'email' => ['Неверный email или пароль'],
+                  'password' => ['Неверный email или пароль']
+              ]
+          ], 422, [], JSON_UNESCAPED_UNICODE)
+        );
+      }
 
-            return back();
-            // return redirect()->route('home')
-            //     ->with('success', 'Вы успешно вошли!');
-        }
+      $request->session()->regenerate();
 
-        // Если не удалось — назад с ошибкой
-        return back()->withErrors([
-            'email' => 'Неверный email или пароль.',
-        ])->onlyInput('email');
+      return back();
     }
 
     public function logout(Request $request)
