@@ -14,14 +14,14 @@
 </head>
 <body class="bg-gray-300 text-center p-10">
 
-<header>
-    <div class="bg-indigo-300 flex">
-        <div class="container mx-auto px-4 relative w-auto h-25">
+<header class="sticky top-0 z-50 bg-gray">
+    <div class="flex relative">
+        <div class="container mx-auto px-4 relative w-auto">
             <nav>
                 <!-- Кнопка для мобилки -->
                 <button
                     id="menuBtn"
-                    class="md:hidden text-2xl p-2 focus:outline-none"
+                    class="lg:hidden text-2xl p-2 focus:outline-none"
                 >
                     ☰
                 </button>
@@ -29,36 +29,35 @@
                 <!-- Основное меню -->
                 <ul
                     id="menu"
-                    class="hidden md:flex md:space-x-2 justify-center
-                        absolute md:static top-12 left-0
-                        w-full md:w-auto
-                        bg-gray-800 md:bg-transparent
-                        flex-col md:flex-row
-                        z-50"
+                    class="hidden lg:flex justify-center
+                        lg:h-[86px]
+                        absolute lg:static top-12 left-0
+                        w-full lg:w-auto
+                        bg-gray-800 lg:bg-transparent
+                        flex-col lg:flex-row
+                        z-50
+                        lg:gap-15"
                 >
                     @foreach($menu as $chapter)
                         <li class="relative group border-b md:border-none">
 
                             <!-- Кнопка раздела -->
                             <button
-                                class="w-full md:w-auto h-25
-                                    bg-orange-100 p-4 md:p-3
-                                    font-semibold text-2xl text-gray-600
-                                    hover:text-indigo-600 hover:bg-gray-200"
-                            >
-                                {{ $chapter->title }}
+                                class="w-full md:w-[90px] pb-[5px]"
+                              >
+                              <img src="/storage/menu/sports.png" alt="">
+                                <!-- {{ $chapter->title }} -->
                             </button>
 
                             @if($chapter->category->count())
                             <!-- Подменю -->
                                 <ul
-                                    class="hidden group-hover:block
+                                    class="hidden hidden group-hover:block
                                         md:absolute md:left-0
                                         md:bg-white md:shadow-lg
                                         md:min-w-[200px]"
                                         >
                                         <!-- md:mt-2 -->
-                                        <li class="h-2 bg-gray-300" ></li>
                                     @foreach($chapter->category as $category)
                                         <li>
                                             <a
@@ -86,12 +85,21 @@
             <x-register />
         @endif
         --}}
+        {{--
         @if(isset($user))
             <x-AuthManager.status :$user/>
         @else
             <x-AuthManager.status/>
         @endif
-    </div>
+        </div>
+        --}}
+
+        @if(isset($user))
+          <div class="absolute top-[25%] right-5">
+            <x-AuthManager.status :$user/>
+          </div>
+        @endif
+      </div>
 </header>
 
     @yield('content')

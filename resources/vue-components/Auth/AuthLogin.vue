@@ -54,14 +54,13 @@
     password: null,
   });
 
-  function setErrors(receivedErrors) {
-    if (receivedErrors === null) {
-      Object.entries(errors).forEach(([k]) => {
-        errors[k] = null;
-      });
-      return;
-    }
+  function clearErrors() {
+    Object.entries(errors).forEach(([k]) => {
+      errors[k] = null;
+    });
+  }
 
+  function setErrors(receivedErrors) {
     if (receivedErrors) {
       Object.entries(receivedErrors).forEach(([k, [v]]) => {
         if (k in errors) {
@@ -84,7 +83,7 @@
   }
 
   watch([email, password], () => {
-    setErrors(null);
+    clearErrors();
   });
 </script>
 

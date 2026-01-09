@@ -17,6 +17,15 @@
         placeholder="Введите Email"
         class="border rounded px-2 py-2 text-[14px] focus:outline-none focus:ring-1 focus:ring-blue-400"
       />
+
+      <input
+        v-model="name"
+        type="text"
+        name="name"
+        placeholder="Введите имя"
+        class="border rounded px-2 py-2 text-[14px] focus:outline-none focus:ring-1 focus:ring-blue-400"
+      />
+
       <input
         v-model="password"
         type="password"
@@ -24,13 +33,15 @@
         placeholder="Введите пароль"
         class="border rounded px-2 py-2 text-[14px] focus:outline-none focus:ring-1 focus:ring-blue-400"
       />
+
       <input
-        v-model="confirmPassword"
+        v-model="passwordConfirmation"
         type="password"
         name="confirmPassword"
         placeholder="Подтвердите пароль"
         class="border rounded px-2 py-2 text-[14px] focus:outline-none focus:ring-1 focus:ring-blue-400"
       />
+
       <button
         type="submit"
         class="w-40 m-auto bg-blue-500 text-white text-[14px] py-2 rounded hover:bg-blue-600 cursor-pointer"
@@ -47,17 +58,18 @@
   import axios from 'axios';
 
   const email = ref('');
+  const name = ref('');
   const password = ref('');
-  const confirmPassword = ref('');
+  const passwordConfirmation = ref('');
 
   function sendHandler() {
-    const formData = new FormData();
-    formData.append('email', email.value);
-    formData.append('password', password.value);
-    formData.append('confirmPassword', confirmPassword.value);
-    formData.append('_csrf', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
-    axios.post('/register', formData).then(({ data, request }) => {
-      console.warn('data', data);
+    axios.post('/register', {
+      name: name.value,
+      email: email.value,
+      password: password.value,
+      password_confirmation : passwordConfirmation.value,
+      _csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    }).then(({ request }) => {
       document.location.href = request.responseURL;
     });
   }

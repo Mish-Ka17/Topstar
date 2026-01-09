@@ -31,7 +31,6 @@ class UserController extends Controller
             return back();
             //return redirect()->route('home');//'view('main');)
          };
-         return redirect('main');
     }
 
     public function login(Request $request)

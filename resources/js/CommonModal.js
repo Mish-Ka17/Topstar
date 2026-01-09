@@ -1,3 +1,5 @@
+import { AUTH_MODAL_CONTENT_ID } from './constants.js';
+
 document.addEventListener('click', (e) => {
     const open = e.target.closest('[data-modal-open]')
     const close = e.target.closest('[data-modal-close]')
@@ -11,11 +13,17 @@ document.addEventListener('click', (e) => {
     }
 
     if (close) {
-        const name = close.dataset.modalClose
+        const name = close.dataset.modalClose;
         document
             .getElementById(`modal-${name}`)
-            ?.classList.add('hidden')
-            // ?.classList.remove('flex')
+            ?.classList.add('hidden');
+
+        const modalContent = document.getElementById(`${AUTH_MODAL_CONTENT_ID}`);
+        if (modalContent) {
+          console.warn('HEY=', modalContent);
+
+          modalContent.innerHTML = '';
+        }
     }
 })
 

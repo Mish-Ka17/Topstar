@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Article;
 use App\Models\Chapter;
+use App\Models\Country;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -104,6 +105,7 @@ class ArticleController extends Controller
             $articles = Article::query()->where('category_id',$category->id);
         };
 
+        $countrySelectedTitle= $request->country ? Country::where('id', $request->country)->get()->first()->title : '';
         $countryselected=$request->country;
 
         $articles=$articles->get();
@@ -112,10 +114,10 @@ class ArticleController extends Controller
             $articles_players = $articles->where('active',1);
             $articles_teams = $articles->where('active',0);
 
-            return view('categoryShow', compact('user','chapter','category','articles_players','articles_teams','countryselected'));
+            return view('categoryShow', compact('user','chapter','category','articles_players','articles_teams','countryselected','countrySelectedTitle'));
         }
             else {
-            return view('categoryShowCommon', compact('user','chapter','category','articles','country$validatedselected'));
+            return view('categoryShowCommon', compact('user','chapter','category','articles','countryselected','countrySelectedTitle'));
         }
 
 /****************************** */

@@ -51,7 +51,7 @@
                     @endforeach
                 @endif
             </div>
-        <x-addcomment :$user :$articleid />
+          <x-addcomment :$user :$articleid />
         </section>
     </article>
   @endsection

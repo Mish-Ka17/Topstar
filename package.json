@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.1.16",
+        "@tailwindplus/elements": "^1.0.22",
         "tailwindcss": "^4.1.16",
         "vue": "^3.5.26"
     }
