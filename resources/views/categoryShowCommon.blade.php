@@ -1,13 +1,15 @@
 @extends ('layouts.app')
 
 @section ('content')
-    <x-breadcrumbs />
+    <div class="flex justify-between">
+      <x-breadcrumbs />
+      <!--Фильтр  -->
+      <x-filtercountry :$countryselected :$countrySelectedTitle :$countries :$chapter :$category />
+      <!--  -->
+    </div>
+
     <section class="prose prose-lg max-w-none">
-
-            <!--Фильтр  -->
-        <x-filtercountry :$countryselected :$countries :$chapter :$category />
-        <!--  -->
-
+        <h1 class="text-sm sm:text-2xl font-bold text-gray-600 mb-3">{{$category->title}}</h1>
         <article class="flex bg-grey-200 shadow-lg rounded-3xl p-2 sm:p-1 max-w-6xl mx-auto">
 
             <div class="justify-left w-3/5 gap-1 px-2">

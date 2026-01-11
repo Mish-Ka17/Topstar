@@ -14,6 +14,9 @@ class CreateArticleComposer
     public function compose(View $view): void
     {
         $countries=Country::all();
-        $view->with('countries', $countries);
+        $countrySelectedTitle = '';
+        $view
+          ->with('countries', $countries)
+          ->with('countrySelectedTitle', $countrySelectedTitle);
     }
 }

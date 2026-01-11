@@ -23,10 +23,11 @@
  <form method="POST" action="{{route('articles.index',[$chapter,$category])}}" class="flex items-center gap-4">
   @csrf
   <input type="hidden" name="country" value="{{ $countryselected }}" id="select-country-input">
+  <div class="flex flex-col">
+  <!-- <label for="select-country" class="block text-sm/6 font-medium text-black">Страна</label> -->
 
-  <label for="select-country" class="block text-sm/6 font-medium text-black">Страна</label>
-  <el-select id="select-country" name="selected" value="{{ $countryselected }}" class="md:w-[200px] mt-2 block">
-    <button type="button" class="grid w-full cursor-default grid-cols-1 rounded-md bg-white/5 py-1.5 pr-2 pl-3 text-left text-white outline-1 -outline-offset-1 outline-white/10 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-500 sm:text-sm/6">
+  <el-select id="select-country" name="selected" value="{{ $countryselected }}" class="md:w-[140px] block">
+    <button type="button" class="grid w-full cursor-default grid-cols-1 rounded-md bg-white/5 pr-2 pl-3 text-left text-gray-800 outline-1 -outline-offset-1 outline-white/10 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-500 sm:text-sm/6">
       <el-selectedcontent class="col-start-1 row-start-1 flex items-center gap-3 pr-6">
         <span class="block truncate">{{ $countrySelectedTitle }}</span>
       </el-selectedcontent>
@@ -35,23 +36,23 @@
       </svg>
     </button>
 
-    <el-options anchor="bottom start" popover class="max-h-56 w-(--button-width) overflow-auto rounded-md bg-gray-800 py-1 text-base outline-1 -outline-offset-1 outline-white/10 [--anchor-gap:--spacing(1)] data-leave:transition data-leave:transition-discrete data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm">
-      <el-option value="" class="group/option relative block cursor-default py-2 pr-9 pl-3 text-white select-none focus:bg-indigo-500 focus:text-white focus:outline-hidden">
+    <el-options anchor="bottom start" popover class="max-h-56 w-(--button-width) overflow-auto rounded-md bg-gray-500 py-1 text-base outline-1 -outline-offset-1 outline-white/10 [--anchor-gap:--spacing(1)] data-leave:transition data-leave:transition-discrete data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm">
+      <el-option value="" class="group/option relative block cursor-default pr-9 pl-3 text-white select-none focus:bg-indigo-500 focus:text-white focus:outline-hidden">
         <div class="flex items-center">
-          <span class="ml-3 block truncate font-normal group-aria-selected/option:font-semibold">Все страны</span>
+          <span class="block truncate font-normal group-aria-selected/option:font-semibold">Все страны</span>
         </div>
-        <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-400 group-not-aria-selected/option:hidden group-focus/option:text-white in-[el-selectedcontent]:hidden">
+        <span class="absolute inset-y-0 right-0 flex items-center pr-1 text-indigo-600 group-not-aria-selected/option:hidden group-focus/option:text-white in-[el-selectedcontent]:hidden">
           <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5">
             <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
           </svg>
         </span>
       </el-option>
       @foreach($countries as $country)
-      <el-option value="{{ $country->id }}" class="group/option relative block cursor-default py-2 pr-9 pl-3 text-white select-none focus:bg-indigo-500 focus:text-white focus:outline-hidden">
+      <el-option value="{{ $country->id }}" class="group/option relative block cursor-default pl-3 text-white select-none focus:bg-indigo-500 focus:text-white focus:outline-hidden">
         <div class="flex items-center">
-          <span class="ml-3 block truncate font-normal group-aria-selected/option:font-semibold">{{ $country->title }}</span>
+          <span class="ml-1 block truncate font-normal group-aria-selected/option:font-semibold">{{ $country->title }}</span>
         </div>
-        <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-400 group-not-aria-selected/option:hidden group-focus/option:text-white in-[el-selectedcontent]:hidden">
+        <span class="absolute inset-y-0 right-0 flex items-center pr-1 text-indigo-400 group-not-aria-selected/option:hidden group-focus/option:text-white in-[el-selectedcontent]:hidden">
           <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5">
             <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
           </svg>
@@ -61,10 +62,11 @@
     </el-options>
   </el-select>
 
-  <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-      Применить
+  <button type="submit" class="bg-blue-300 text-white text-sm w-[120px] py-1 rounded hover:bg-blue-700">
+      Выбрать страну
   </button>
- </form>
+</div>
+</form>
 
  <script>
   const selector = document.querySelector('#select-country');

@@ -10,11 +10,11 @@
 
     <section class="prose prose-lg max-w-none">
         <!--  -->
-        <h1 class="text-sm sm:text-2xl font-bold text-gray-600 mb-3">Футболисты и клубы</h1>
+        <h1 class="text-sm sm:text-2xl font-bold text-gray-600 mb-3">{{$category->title}}</h1>
         <article class="flex bg-grey-200 shadow-lg rounded-3xl p-2 sm:p-1 max-w-6xl mx-auto">
             <!--Игроки -->
             <div class="justify-left w-3/5 gap-1 px-2">
-                <p class="mb-3 text-gray-500 italic">Игроки</p>
+
                 <div class="flex flex-wrap justify-left gap-4 px-2">
                     @foreach ($articles_players as $article)
                         @foreach ($article->content as $block)
@@ -39,7 +39,7 @@
             </div>
             <!--Команды -->
             <div class="justify-center w-2/5 gap-1 px-2">
-                <p class="mb-3 text-gray-500 italic">Клубы</p>
+
                 <div class="flex flex-wrap justify-left gap-4 px-2">
                     @foreach ($articles_teams as $article)
                         @foreach ($article->content as $block)

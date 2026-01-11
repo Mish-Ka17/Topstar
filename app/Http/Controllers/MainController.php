@@ -24,6 +24,7 @@ class MainController extends Controller
     public function categoryShow(Request $request,Chapter $chapter, Category $category)
     {
         $countryselected=$request->country;
+        $countrySelectedTitle = '';
 
         $user=Auth::user();//dd($user);
 
@@ -35,7 +36,7 @@ class MainController extends Controller
 
             return view('categoryShow', compact('user','chapter','category','articles_players','articles_teams','countryselected'));
         }
-            else {
+            else { //dd($category->title);
             return view('categoryShowCommon', compact('user','chapter','category','articles','countryselected'));
 
         }
