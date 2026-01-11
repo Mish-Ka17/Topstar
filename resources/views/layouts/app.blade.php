@@ -36,23 +36,39 @@
                         bg-gray-800 lg:bg-transparent
                         flex-col lg:flex-row
                         z-50
-                        lg:gap-15"
+                        lg:gap-20"
                 >
                     @foreach($menu as $chapter)
                         <li class="relative group border-b md:border-none">
 
                             <!-- Кнопка раздела -->
                             <button
-                                class="w-full md:w-[90px] pb-[5px]"
+                              class="w-[90px] h-[90px] rounded-2xl overflow-hidden shadow-sm"
                               >
-                              <img src="/storage/menu/sports.png" alt="">
+                              @switch($loop->iteration)
+                                @case (1)
+                                <img src="/storage/menu/science.webp" alt="science.webp" class="w-full h-full object-cover">
+                                @break
+                                @case (2)
+                                <img src="/storage/menu/art.webp" alt="art.webp" class="w-full h-full object-cover">
+                                @break
+                                @case (3)
+                                <img src="/storage/menu/culture.webp" alt="culture.webp" class="w-full h-full object-cover">
+                                @break
+                                @case (4)
+                                <img src="/storage/menu/sports.webp" alt="sports.webp" class="w-full h-full object-cover">
+                                @break
+                                @case (5)
+                                <img src="/storage/menu/society.webp" alt="society.webp" class="w-full h-full object-cover">
+                                @break
+                              @endswitch
                                 <!-- {{ $chapter->title }} -->
                             </button>
 
                             @if($chapter->category->count())
                             <!-- Подменю -->
                                 <ul
-                                    class="hidden hidden group-hover:block
+                                    class="hidden group-hover:block
                                         md:absolute md:left-0
                                         md:bg-white md:shadow-lg
                                         md:min-w-[200px]"
