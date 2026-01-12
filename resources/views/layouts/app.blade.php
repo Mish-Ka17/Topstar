@@ -15,8 +15,12 @@
 <body class="bg-gray-300 text-center p-10">
 
 <header class="sticky top-0 z-50 bg-gray">
-    <div class="flex relative">
-        <div class="container mx-auto px-4 relative w-auto">
+         <div class="flex relative justify-center">
+          <div>
+            <img src="/storage/logo/logo.webp" alt="logo.webp" class="w-full h-full rounded-2xl overflow-hidden shadow-sm object-cover" >
+          </div>
+          <div class="container mx-auto px-4 relative w-auto">
+
             <nav>
                 <!-- Кнопка для мобилки -->
                 <button
@@ -69,17 +73,17 @@
                             <!-- Подменю -->
                                 <ul
                                     class="hidden group-hover:block
-                                        md:absolute md:left-0
-                                        md:bg-white md:shadow-lg
-                                        md:min-w-[200px]"
+                                        md:absolute md:top-[90px]
+                                        md:bg-gray-200 md:shadow-lg
+                                        md:min-w-[150px]"
                                         >
                                         <!-- md:mt-2 -->
                                     @foreach($chapter->category as $category)
                                         <li>
                                             <a
                                                 href="{{ route('category.show', [$chapter, $category]) }}"
-                                                class="block px-4 py-2 text-gray-700
-                                                    hover:bg-indigo-50 hover:text-indigo-800"
+                                                class="block px-2 py-1 text-gray-700
+                                                    hover:bg-indigo-200 hover:text-indigo-800"
                                             >
                                                 {{ $category->title }}
                                             </a>
@@ -121,7 +125,7 @@
     @yield('content')
 
 <footer class="footer">
-    <div class="container bg-indigo-300 text-center p-10">
+    <div class="container bg-indigo-200 text-center p-10">
         <div class="row">
             <div class="col-12 col-md-5">
                 <div class="footer__title">

@@ -3,7 +3,7 @@
     <x-breadcrumbs />
     <article class="bg-gray-100 shadow-lg rounded-3xl p-6 sm:p-10 max-w-6xl mx-auto">
         <header class="mb-8 text-center">
-            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">{{ $title }}</h1>
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-500 mb-3">{{ $title }}</h1>
             <p class="text-gray-500 italic">{{$country}}</p>
         </header>
 
