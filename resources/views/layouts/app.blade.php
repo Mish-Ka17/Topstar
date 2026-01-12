@@ -15,9 +15,11 @@
 <body class="bg-gray-300 text-center p-10">
 
 <header class="sticky top-0 z-50 bg-gray">
-         <div class="flex relative justify-center">
+         <div class="flex relative">
           <div>
-            <img src="/storage/logo/logo.webp" alt="logo.webp" class="w-full h-full rounded-2xl overflow-hidden shadow-sm object-cover" >
+            <a href="{{route('home')}}">
+              <img src="/storage/logo/logo-new.webp" alt="logo.webp" class="w-full h-full rounded-2xl overflow-hidden shadow-sm object-cover" >
+            </a>
           </div>
           <div class="container mx-auto px-4 relative w-auto">
 
