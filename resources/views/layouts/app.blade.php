@@ -15,13 +15,13 @@
 <body class="bg-gray-300 text-center p-10">
 
 <header class="sticky top-0 z-50 bg-gray">
-         <div class="flex relative">
+    <div class="flex relative">
           <div>
-            <a href="{{route('home')}}">
-              <img src="/storage/logo/logo-new.webp" alt="logo.webp" class="w-full h-full rounded-2xl overflow-hidden shadow-sm object-cover" >
-            </a>
+              <a href="{{route('home')}}">
+                <img src="/storage/logo/logo-new.webp" alt="logo.webp" class="w-full h-full rounded-2xl overflow-hidden shadow-sm object-cover" >
+              </a>
           </div>
-          <div class="container mx-auto px-4 relative w-auto">
+          <div class="container ml-[70px] px-4 relative w-auto">
 
             <nav>
                 <!-- Кнопка для мобилки -->
@@ -35,7 +35,7 @@
                 <!-- Основное меню -->
                 <ul
                     id="menu"
-                    class="hidden lg:flex justify-center
+                    class="lg:flex justify-center
                         lg:h-[86px]
                         absolute lg:static top-12 left-0
                         w-full lg:w-auto
@@ -77,11 +77,12 @@
                                     class="hidden group-hover:block
                                         md:absolute md:top-[90px]
                                         md:bg-gray-200 md:shadow-lg
-                                        md:min-w-[150px]"
+                                        md:min-w-[150px]
+                                        "
                                         >
                                         <!-- md:mt-2 -->
                                     @foreach($chapter->category as $category)
-                                        <li>
+                                        <li class="border-b">
                                             <a
                                                 href="{{ route('category.show', [$chapter, $category]) }}"
                                                 class="block px-2 py-1 text-gray-700
@@ -121,10 +122,13 @@
             <x-AuthManager.status :$user/>
           </div>
         @endif
-      </div>
+    </div>
 </header>
 
-    @yield('content')
+<div class="min-h-[400px]">
+  @yield('content')
+</div>
+
 
 <footer class="footer">
     <div class="container bg-indigo-200 text-center p-10">

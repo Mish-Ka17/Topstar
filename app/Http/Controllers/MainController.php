@@ -36,7 +36,7 @@ class MainController extends Controller
 
             return view('categoryShow', compact('user','chapter','category','articles_players','articles_teams','countryselected'));
         }
-            else { //dd($category->title);
+            else { //dd($articles->count());
             return view('categoryShowCommon', compact('user','chapter','category','articles','countryselected'));
 
         }

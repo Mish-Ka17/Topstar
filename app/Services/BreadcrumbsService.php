@@ -13,7 +13,7 @@ class BreadcrumbsService
         $route = Route::current();
         if (!$route) return $crumbs;
 
-        $params = $route->parameters();
+        $params = $route->parameters(); //dd($params);
 
         // Если есть Chapter (например /chapters/{chapter})
         if (isset($params['chapter'])) {
