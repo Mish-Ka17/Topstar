@@ -3,7 +3,6 @@
 @section ('content')
     <div class="flex justify-between">
       <x-breadcrumbs />
-
       <!--Фильтр  -->
       <x-filtercountry :$countryselected :$countrySelectedTitle :$countries :$chapter :$category />
     </div>

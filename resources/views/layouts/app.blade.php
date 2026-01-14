@@ -99,8 +99,8 @@
                     @endforeach
                 </ul>
             </nav>
-        </div>
-
+          </div>
+          <x-search/>
         {{--
         @if(isset($user))
             <x-register :$user />
@@ -118,7 +118,7 @@
         --}}
 
         @if(isset($user))
-          <div class="absolute top-[25%] right-5">
+          <div class="absolute top-[60%] right-5">
             <x-AuthManager.status :$user/>
           </div>
         @endif

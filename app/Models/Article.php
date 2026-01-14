@@ -24,6 +24,10 @@ class Article extends Model
     {
         return $this->hasMany(ArticleMedia::class)->orderBy('order');
     }
+    public function category()
+    {
+      return $this->belongsTo(Category::class);
+    }
     public function country()
     {
         return $this->belongsTo(Country::class);

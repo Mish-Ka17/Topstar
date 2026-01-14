@@ -8,7 +8,7 @@
     class="flex fixed inset-0 z-50 hidden items-center justify-center"
 >
     {{-- overlay --}}
-    <div
+  <div
         class="absolute inset-0 bg-black/50"
         data-modal-close="{{ $id }}"
     ></div>

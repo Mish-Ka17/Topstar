@@ -1,7 +1,7 @@
 <div class="w-[10%]">
     @isset($user)
       <el-dropdown class="inline-block">
-        <button class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-white hover:bg-white/20 cursor-pointer"
+        <button class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-gray-600 hover:bg-white/20 cursor-pointer"
         title="{{$user->name}}">
         {{$user->name}}
           <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="-mr-1 size-5 text-gray-400">

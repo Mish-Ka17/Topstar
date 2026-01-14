@@ -4,10 +4,10 @@
       <span class="text-xl font-semibold">Авторизация</span>
 
       <div
-      class="w-8 h-8 cursor-pointer"
-      v-html="closeIcon"
-      data-modal-close="auth"/>
-    </div>
+        class="w-8 h-8 cursor-pointer"
+        v-html="closeIcon"
+        data-modal-close="auth"/>
+      </div>
 
     <div class="flex flex-col space-y-[10px]">
       <div class="flex flex-col space-y-[5px]">

@@ -36,6 +36,8 @@ Route::post('login', 'App\Http\Controllers\UserController@login')->name('login')
 
 Route::get('logout','App\Http\Controllers\UserController@logout')->name('logout');
 
+Route::get('/search','App\Http\Controllers\MainController@search')->name('search');
+
 Route::get('{chapter}/{category}/{article}', '\App\Http\Controllers\Admin\ArticleController@articleShow')->name('article.show');
 
 Route::get('/{chapter}/{category}', 'App\Http\Controllers\MainController@categoryShow')->name('category.show');

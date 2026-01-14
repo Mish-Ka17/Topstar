@@ -38,7 +38,7 @@
             @endforeach
             <div class="p-4 bg-gray-100 rounded-lg shadow mb-4">
                 @if($comments->count()==0)
-                    <p class="text-xl sm:text-2xl font-normal text-gray-400 mb-3">
+                    <p class="text-xl sm:text-xl font-normal text-gray-400 mb-3">
                     Комментариев пока не оставлено</p>
                 @else
                     <p class="text-xl sm:text-2xl font-bold text-gray-600 mb-3">Комментарии</p>

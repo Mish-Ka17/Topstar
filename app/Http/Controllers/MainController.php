@@ -41,4 +41,11 @@ class MainController extends Controller
 
         }
     }
+
+    public function search(Request $request)
+    {
+      $search=$request->search;
+      $articles=Article::where('title', 'LIKE', '%'.$search.'%')->get();
+      return view('searchShow', compact('articles','search'));
+    }
 }
