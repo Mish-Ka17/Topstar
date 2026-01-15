@@ -12,7 +12,7 @@
 
     <title>Stars</title>
 </head>
-<body class="bg-gray-300 text-center p-10">
+<body class="bg-gray-300 text-center p-6">
 
 <header class="sticky top-0 z-50 bg-gray">
     <div class="flex relative">
@@ -76,7 +76,7 @@
                                 <ul
                                     class="hidden group-hover:block
                                         md:absolute md:top-[90px]
-                                        md:bg-gray-200 md:shadow-lg
+                                        md:bg-gray-100 md:shadow-lg
                                         md:min-w-[150px]
                                         "
                                         >

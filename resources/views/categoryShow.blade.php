@@ -26,7 +26,7 @@
                             h-[160px]
                             ">
                         <a href="{{route('article.show', [$chapter, $category, $article])}}">
-                            <img src="{{$block['src']}}" alt="{{$block['caption']}}" class="w-full h-auto">
+                            <img src="{{$block['src']}}" alt="{{$block['caption']}}" class="w-auto h-auto">
                             <p class="p-1 text-sx text-gray-700 italic text-xs text-center">{{ $block['caption']}}</p>
                         </a>
                         </div>

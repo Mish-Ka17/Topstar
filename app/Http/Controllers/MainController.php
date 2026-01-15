@@ -45,7 +45,17 @@ class MainController extends Controller
     public function search(Request $request)
     {
       $search=$request->search;
+      if($search=='')
+      {
+        // return view('searchShow', compact('search'));
+        return redirect()->back();
+      }
       $articles=Article::where('title', 'LIKE', '%'.$search.'%')->get();
-      return view('searchShow', compact('articles','search'));
+        if (Auth::user())
+        {
+          $user=Auth::user();
+          return view('searchShow', compact('articles','search','user'));
+        }
+        return view('searchShow', compact('articles','search'));
     }
 }
