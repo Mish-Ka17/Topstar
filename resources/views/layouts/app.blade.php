@@ -6,6 +6,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" type="image/svg+xml" href="/storage/logo/favicon.svg">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -14,14 +15,42 @@
 </head>
 <body class="bg-gray-300 text-center p-6">
 
-<header class="sticky top-0 z-50 bg-gray">
-    <div class="flex relative">
-          <div>
-              <a href="{{route('home')}}">
-                <img src="/storage/logo/logo-new.webp" alt="logo.webp" class="w-full h-full rounded-2xl overflow-hidden shadow-sm object-cover" >
+<header class="sticky h-[90px] top-0 z-50 bg-indigo-300">
+    <div class="flex h-[90px] justify-between">
+          <div class="flex mt-4 ml-3">
+              <a href="{{route('home')}}" class="items-center gap-2">
+                <!-- <img src="/storage/logo/logo-new.webp" alt="logo.webp" class="w-full h-full rounded-2xl overflow-hidden shadow-sm object-cover" > -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 40 40"
+                  class="w-10 h-10 text-red-800 hover:text-red-600"
+                  aria-label="PERSONA logo"
+                  role="img"
+                >
+                  <!-- круг -->
+                  <circle cx="25" cy="25" r="22"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"/>
+
+                  <!-- точка -->
+                  <circle cx="25" cy="25" r="2"
+                          fill="currentColor"/>
+                </svg>
+                <div class="">
+                    <span class="font-heading text-xs sm:text-sm tracking-wide text-gray-900 hover:text-red-600">
+                      PERSONA
+                    </span>
+                </div>
               </a>
+              @if(isset($user))
+              <div class="ml-4 mt-9">
+                <x-AuthManager.status :$user/>
+              </div>
+              @endif
           </div>
-          <div class="container ml-[70px] px-4 relative w-auto">
+
+          <div class="container relative w-auto">
 
             <nav>
                 <!-- Кнопка для мобилки -->
@@ -116,12 +145,6 @@
         @endif
         </div>
         --}}
-
-        @if(isset($user))
-          <div class="absolute top-[60%] right-5">
-            <x-AuthManager.status :$user/>
-          </div>
-        @endif
     </div>
 </header>
 

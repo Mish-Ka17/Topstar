@@ -3,7 +3,6 @@
 @section ('content')
     <div class="flex justify-between">
       <x-breadcrumbs />
-      <!--Фильтр  -->
       <x-filtercountry :$countryselected :$countrySelectedTitle :$countries :$chapter :$category />
     </div>
 
@@ -50,10 +49,10 @@
                             w-[100px] sm:w-[50px] md:w-[80px] lg:w-[100px]
                             h-[160px]
                             ">
-                        <a href="{{route('article.show', [$chapter, $category, $article])}}">
+                            <a href="{{route('article.show', [$chapter, $category, $article])}}">
                             <img src="{{$block['src']}}" alt="{{$block['caption']}}" class="w-full h-auto">
                             <p class="p-1 text-sx text-gray-700 italic text-xs text-center">{{ $block['caption']}}</p>
-                        </a>
+                            </a>
                         </div>
                             @break
                             @endif

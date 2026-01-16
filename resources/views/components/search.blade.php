@@ -10,13 +10,12 @@
 </div> --}}
 
 {{--
-<form action="{{ route('search') }}"
-  method="GET"
-  class="relative w-full max-w-xs sm:max-w-[200px] mt-2">
+<form action="{{ route('search') }}
+  method="GET" class="relative w-full max-w-xs sm:max-w-[200px] mt-2 mr-10">
 
   <div>
   <!-- Иконка -->
-      <span class="pointer-events-none absolute top-3 left-3 flex items-center text-gray-400">
+      <span class="pointer-events-none absolute flex items-center text-gray-400">
         <!-- Heroicons: magnifying-glass -->
         <svg xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -38,7 +37,7 @@
           name="search"
           value=""
           placeholder="Поиск…"
-          class="w-[170px] mr-1 rounded-md border border-gray-300
+          class="w-[170px] rounded-md border border-gray-300
                 bg-white
                 pl-9 pr-3 py-2
                 text-sm text-gray-900 placeholder-gray-400
@@ -63,7 +62,7 @@
     <!-- Кнопка поиска -->
     <button
         id="search-toggle" title="Поиск по сайту"
-        class="flex h-10 w-10 ml-3 mt-6 items-center justify-center rounded-md
+        class="flex h-10 w-10 ml-3 mt-6 mr-10 items-center justify-center rounded-md
                text-gray-600 hover:bg-gray-200
                focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer"
                 aria-label="Открыть поиск"
@@ -87,7 +86,7 @@
         id="search-form"
         action="{{ route('search') }}"
         method="GET"
-        class="absolute left-0 top-6 z-50
+        class="absolute right-0 top-6 z-50
                hidden w-64 sm:w-70"
     >
         <input
