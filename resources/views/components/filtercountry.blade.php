@@ -1,25 +1,4 @@
  <!--Фильтр по стране -->
-{{-- <form method="POST" action="{{route('articles.index',[$chapter,$category])}}" class="flex items-center gap-4">
-  @csrf
-  <div>
-    <label class="block text-sm mb-1">Страна</label>
-    <select name="country" class="border rounded text-gray-600 font-light">
-        <option value="">Все</option>
-        @foreach($countries as $country)
-            <option value="{{ $country->id }}"
-                {{ $countryselected == $country->id ? 'selected' : '' }}>
-                {{ $country->title }}
-            </option>
-
-        @endforeach
-    </select>
-  </div>
-
-  <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-      Применить
-  </button>
-</form> --}}
-<!-- ------------------------------------------------------------------------------- -->
  <form method="POST" action="{{route('articles.index',[$chapter,$category])}}" class="flex items-center gap-4">
   @csrf
   <input type="hidden" name="country" value="{{ $countryselected }}" id="select-country-input">
@@ -61,17 +40,20 @@
       @endforeach
     </el-options>
   </el-select>
-
-  <button type="submit" class="bg-blue-300 text-white text-sm w-[120px] py-1 rounded hover:bg-blue-700">
-      Выбрать страну
-  </button>
 </div>
 </form>
 
  <script>
   const selector = document.querySelector('#select-country');
   selector.addEventListener('change', () => {
-    document.querySelector('#select-country-input').value = selector.value;
+    let selectedCountryInput = document.querySelector('#select-country-input');
+    selectedCountryInput.value = selector.value;
+
+    const form = selectedCountryInput.closest('form');
+
+    if (form) {
+      form.submit();
+    }
   });
  </script>
 
