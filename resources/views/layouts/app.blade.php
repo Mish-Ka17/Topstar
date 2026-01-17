@@ -43,11 +43,7 @@
                     </span>
                 </div>
               </a>
-              @if(isset($user))
-              <div class="ml-4 mt-9">
-                <x-AuthManager.status :$user/>
-              </div>
-              @endif
+
           </div>
 
           <div class="container relative w-auto">
@@ -60,12 +56,16 @@
                 >
                     ☰
                 </button>
-
+                @if(isset($user))
+                <div class="absolute right-210 top-13">
+                  <x-AuthManager.status :$user/>
+                </div>
+                @endif
                 <!-- Основное меню -->
                 <ul
                     id="menu"
                     class="lg:flex justify-center
-                        lg:h-[86px]
+                        lg:h-[90px]
                         absolute lg:static top-12 left-0
                         w-full lg:w-auto
                         bg-gray-800 lg:bg-transparent

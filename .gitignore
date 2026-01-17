@@ -46,3 +46,4 @@ Homestead.json
 .env.production
 .phpactor.json
 auth.json
+resources/views/admin/articles/FrendMishka.blade.php

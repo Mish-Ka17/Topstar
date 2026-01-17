@@ -58,11 +58,11 @@
 </form>
 --}}
 
-<div class="relative">
+<div class="mr-8 mt-7">
     <!-- Кнопка поиска -->
     <button
         id="search-toggle" title="Поиск по сайту"
-        class="flex h-10 w-10 ml-3 mt-6 mr-10 items-center justify-center rounded-md
+        class="h-10 w-10 justify-center rounded-md
                text-gray-600 hover:bg-gray-200
                focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer"
                 aria-label="Открыть поиск"
@@ -82,31 +82,47 @@
     </button>
 
     <!-- Выпадающий поиск -->
+    <div class="absolute right-0 bottom-4">
     <form
         id="search-form"
         action="{{ route('search') }}"
         method="GET"
-        class="absolute right-0 top-6 z-50
-               hidden w-64 sm:w-70"
+        class="hidden w-64 sm:w-70"
     >
         <input
             type="text"
             name="search"
             placeholder="Поиск по статьям…"
             class="w-40 rounded-md border border-gray-300
-                   bg-white px-2 py-2 text-sm
+                   bg-white px-2 py-2 mb-2 text-sm
                    shadow-lg
                    focus:border-gray-600 focus:ring-1 focus:ring-gray-600
                    focus:outline-none"
         >
-        <button
-            type="submit"
+        <button type="submit"
+            class="rounded-md
+                  py-2 px-2 text-sm text-gray-800
+                  bg-indigo-100 hover:bg-indigo-400 hover:text-white cursor-pointer"
+
+                  >
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="h-7 w-7">
+                      <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18a7.5 7.5 0 006.15-3.35z"/>
+                  </svg>
+            <!-- type="submit"
             class="hidden sm:inline-flex rounded-md
                   px-4 py-2 text-sm text-gray-800
                   bg-blue-100 hover:bg-blue-400 hover:text-white cursor-pointer">
-            Найти
+            Найти -->
         </button>
     </form>
+    </div>
 </div>
 
 <script>
