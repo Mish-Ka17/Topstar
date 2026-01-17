@@ -24,7 +24,7 @@
 
         {{-- body --}}
         @isset($content)
-          <div class="min-h-[260px]">
+          <div class="min-h-[233px]">
             {{ $content }}
           </div>
         @endisset
