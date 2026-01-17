@@ -58,7 +58,7 @@
 </form>
 --}}
 
-<div class="mr-8 mt-7">
+<div class="relative mr-8 mt-7">
     <!-- Кнопка поиска -->
     <button
         id="search-toggle" title="Поиск по сайту"
@@ -82,12 +82,13 @@
     </button>
 
     <!-- Выпадающий поиск -->
-    <div class="absolute right-0 bottom-4">
+
+  <div class="absolute -right-18 bottom-4">
     <form
         id="search-form"
         action="{{ route('search') }}"
         method="GET"
-        class="hidden w-64 sm:w-70"
+        class="flex hidden w-64 sm:w-70"
     >
         <input
             type="text"
@@ -100,7 +101,7 @@
                    focus:outline-none"
         >
         <button type="submit"
-            class="rounded-md
+            class="rounded-md w-10 h-10 justify-center
                   py-2 px-2 text-sm text-gray-800
                   bg-indigo-100 hover:bg-indigo-400 hover:text-white cursor-pointer"
 
@@ -121,7 +122,7 @@
                   bg-blue-100 hover:bg-blue-400 hover:text-white cursor-pointer">
             Найти -->
         </button>
-    </form>
+      </form>
     </div>
 </div>
 

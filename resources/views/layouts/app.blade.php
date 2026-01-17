@@ -15,7 +15,7 @@
 </head>
 <body class="bg-gray-300 text-center p-6">
 
-<header class="sticky h-[90px] top-0 z-50 bg-indigo-50">
+<header class="sticky h-[94px] top-0 z-50 bg-indigo-50">
     <div class="flex h-[90px] justify-between">
           <div class="flex mt-4 ml-3">
               <a href="{{route('home')}}" class="items-center gap-2">
@@ -37,13 +37,12 @@
                   <circle cx="25" cy="25" r="2"
                           fill="currentColor"/>
                 </svg>
-                <div class="">
+                <div>
                     <span class="font-heading text-xs sm:text-sm tracking-wide text-gray-900 hover:text-red-600">
                       PERSONA
                     </span>
                 </div>
               </a>
-
           </div>
 
           <div class="container relative w-auto">
@@ -123,28 +122,12 @@
                                     @endforeach
                                 </ul>
                             @endif
-
                         </li>
                     @endforeach
                 </ul>
             </nav>
           </div>
           <x-search/>
-        {{--
-        @if(isset($user))
-            <x-register :$user />
-        @else
-            <x-register />
-        @endif
-        --}}
-        {{--
-        @if(isset($user))
-            <x-AuthManager.status :$user/>
-        @else
-            <x-AuthManager.status/>
-        @endif
-        </div>
-        --}}
     </div>
 </header>
 
