@@ -15,7 +15,7 @@
 </head>
 <body class="bg-gray-300 text-center p-6">
 
-<header class="sticky h-[90px] top-0 z-50 bg-indigo-300">
+<header class="sticky h-[90px] top-0 z-50 bg-indigo-50">
     <div class="flex h-[90px] justify-between">
           <div class="flex mt-4 ml-3">
               <a href="{{route('home')}}" class="items-center gap-2">
