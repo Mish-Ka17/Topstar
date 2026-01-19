@@ -4,9 +4,12 @@
     <section class="prose prose-lg max-w-none">
         <!-- <h1 class="text-sm sm:text-2xl font-bold text-gray-600 mb-3">Поиск по...</h1> -->
           @if($articles->count()==0)
-            <p class="bg-gray-50 p-4 text-sm lg:text-2xl lg:bg-gray-300 text-gray-600 justify-center">
-              По запросу <span class="text-blue-700">"{{$search}}"</span> в заголовках статей ничего не найдено
-            </p>
+            <div class="flex items-center justify-center">
+                <x-emptyPageShow/>
+                <p class="bg-gray-50 p-4 text-sm lg:text-2xl lg:bg-gray-300 text-gray-600 justify-center">
+                  По запросу <span class="text-blue-700">"{{$search}}"</span> в заголовках статей ничего не найдено
+                </p>
+            </div>
           @else
             <p class="bg-gray-50 p-4 text-sm lg:text-2xl lg:bg-gray-300 text-gray-600 justify-center">
               По запросу <span class="text-blue-700">"{{$search}}"</span> найдено статей: <span class="text-blue-700">{{$articles->count()}}</span>

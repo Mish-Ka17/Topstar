@@ -13,13 +13,16 @@
 
     <title>Stars</title>
 </head>
-<body class="bg-gray-300 text-center p-6">
+<body class="bg-gradient-to-br
+            from-indigo-300
+            via-gray-300
+            to-indigo-300 text-center p-6">
 
-<header class="sticky h-[94px] top-0 z-50 bg-indigo-50">
-    <div class="flex h-[94px] justify-between">
-          <div class="flex w-46 flex gap-4">
+<header class="sticky h-[120px] top-0 z-50 bg-gradient-to-t from-gray-300 to-indigo-300 text-gray-700">
+    <div class="flex h-[120px] items-center justify-between">
+          <div class="flex w-46 gap-4">
               <a href="{{route('home')}}">
-                <div class="flex flex-col ml-3 mt-4">
+                <div class="flex flex-col ml-7 mt-1">
                     <div>
                         <!-- <img src="/storage/logo/logo-new.webp" alt="logo.webp" class="w-full h-full rounded-2xl overflow-hidden shadow-sm object-cover" > -->
                         <svg
@@ -34,13 +37,13 @@
                                 fill="none"
                                 stroke="currentColor"
                                 stroke-width="2"/>
-    
+
                         <!-- точка -->
                         <circle cx="25" cy="25" r="2"
                                 fill="currentColor"/>
                         </svg>
                     </div>
-                    
+
                     <div>
                         <span class="font-heading text-xs sm:text-sm tracking-wide text-gray-900 hover:text-red-600">
                         PERSONA
@@ -48,12 +51,12 @@
                     </div>
                 </div>
               </a>
-
               @if(isset($user))
-                <div class="self-end mb-[14px]">
+                <div class="self-end">
                   <x-AuthManager.status :$user/>
                 </div>
-                @endif
+              @endif
+
           </div>
 
           <div class="container relative w-auto">
@@ -109,12 +112,11 @@
                             @if($chapter->category->count())
                             <!-- Подменю -->
                                 <ul
-                                    class="hidden group-hover:block
-                                        md:absolute md:top-[90px]
-                                        md:bg-gray-100 md:shadow-lg
-                                        md:min-w-[150px]
-                                        "
-                                        >
+                                  class="hidden group-hover:block
+                                    md:absolute md:top-[90px] md:-right-[30px]
+                                    md:bg-gray-100 md:shadow-lg
+                                    md:min-w-[150px]"
+                                >
                                         <!-- md:mt-2 -->
                                     @foreach($chapter->category as $category)
                                         <li class="border-b">

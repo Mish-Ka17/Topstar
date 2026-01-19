@@ -8,14 +8,17 @@
       <!--  -->
     </div>
 
-    <section class="prose prose-lg max-w-none">
+  <section class="prose prose-lg max-w-none">
         <h1 class="text-sm sm:text-2xl font-bold text-gray-600 mb-3">{{$category->title}}</h1>
-        @if($articles->count()==0)
-          <p class="bg-gray-50 p-4 text-sm lg:text-2xl lg:bg-gray-300 text-gray-600 justify-center">
-            Раздел заполняется контентом. Извините...
-          </p>
-        @endif
-        <article class="flex bg-grey-200 shadow-lg rounded-3xl p-2 sm:p-1 max-w-6xl mx-auto">
+          @if($articles->count()==0)
+            <div class="flex items-center justify-center">
+                <x-emptyPageShow/>
+                <p class="bg-gray-50 p-4 text-sm lg:text-2xl lg:bg-gray-300 text-gray-600 justify-center">
+                  Раздел находится в стадии заполнения контентом
+                </p>
+            </div>
+          @endif
+         <article class="flex bg-grey-200 shadow-lg rounded-3xl p-2 sm:p-1 max-w-6xl mx-auto">
             <div class="justify-left w-3/5 gap-1 px-2">
 
                 <div class="flex flex-wrap justify-left gap-4 px-2">

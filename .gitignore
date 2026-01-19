@@ -20,7 +20,7 @@ yarn-error.log
 node_modules/
 npm-debug.log
 yarn-error.log
-/resources/views/admin/articles/FrendMishka.blade.php
+resources/views/admin/articles/FrendMishka.blade.php
 
 # Laravel 4 specific
 app/storage/
@@ -46,4 +46,4 @@ Homestead.json
 .env.production
 .phpactor.json
 auth.json
-resources/views/admin/articles/FrendMishka.blade.php
+
