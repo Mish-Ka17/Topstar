@@ -72,7 +72,6 @@
 
                 <!-- Основное меню -->
                 <ul
-                    id="menu"
                     class="lg:flex justify-center
                         lg:h-[90px]
                         absolute lg:static top-12 left-0
@@ -87,17 +86,17 @@
 
                             <!-- Кнопка раздела -->
                             <button
-                              class="w-[90px] h-[90px] rounded-2xl overflow-hidden shadow-sm"
+                              class="menuBtn w-[90px] h-[90px] rounded-2xl overflow-hidden shadow-sm"
                               >
                               @switch($loop->iteration)
                                 @case (1)
-                                <img src="/storage/menu/science.webp" alt="science.webp" class="w-full h-full object-cover">
+                                <img id="1" src="/storage/menu/science.webp" alt="science.webp" class="w-full h-full object-cover">
                                 @break
                                 @case (2)
-                                <img src="/storage/menu/art.webp" alt="art.webp" class="w-full h-full object-cover">
+                                <img id="2" src="/storage/menu/art.webp" alt="art.webp" class="w-full h-full object-cover">
                                 @break
                                 @case (3)
-                                <img src="/storage/menu/culture.webp" alt="culture.webp" class="w-full h-full object-cover">
+                                <img id='3' src="/storage/menu/culture.webp" alt="culture.webp" class="w-full h-full object-cover">
                                 @break
                                 @case (4)
                                 <img src="/storage/menu/sports.webp" alt="sports.webp" class="w-full h-full object-cover">
@@ -112,18 +111,18 @@
                             @if($chapter->category->count())
                             <!-- Подменю -->
                                 <ul
-                                  class="hidden group-hover:block
+                                    class="hidden group-hover:block
                                     md:absolute md:top-[90px] md:-right-[30px]
                                     md:bg-gray-100 md:shadow-lg
-                                    md:min-w-[150px]"
+                                    md:min-w-[150px] rounded-sm"
                                 >
                                         <!-- md:mt-2 -->
                                     @foreach($chapter->category as $category)
                                         <li class="border-b">
                                             <a
                                                 href="{{ route('category.show', [$chapter, $category]) }}"
-                                                class="block px-2 py-1 text-gray-700
-                                                    hover:bg-indigo-200 hover:text-indigo-800"
+                                                class="block px-2 py-1 text-gray-900
+                                                    hover:bg-indigo-100 hover:text-indigo-800"
                                             >
                                                 {{ $category->title }}
                                             </a>
@@ -164,7 +163,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-3">
-                <div class="footer__title"><a href="#" class="footer-link">Контакты</a></div>
+                <div class="footer__title"><a href="#" class=" bg-footer-link">Контакты</a></div>
                 Написать нам
             </div>
         </div>
@@ -176,6 +175,30 @@
 <script>
     document.getElementById('menuBtn').addEventListener('click', () => {
         document.getElementById('menu').classList.toggle('hidden');
+    });
+
+    const buttons = document.querySelectorAll('.menuBtn');
+    buttons.forEach(button => {
+        const imgPath = button.querySelector('img').getAttribute('src');
+        const ul = button.nextElementSibling;
+
+        switch(imgPath) {
+           case '/storage/menu/science.webp':
+              ul.classList.add('md:bg-linear-to-br','from-rose-400','via-rose-200','to-rose-100');//'bg-[length:200%_200%]','animate-pulse'
+              break;
+           case '/storage/menu/art.webp':
+              ul.classList.add('md:bg-linear-to-br','from-blue-400','via-blue-200','to-blue-100');
+              break;
+           case '/storage/menu/culture.webp':
+              ul.classList.add('md:bg-linear-to-br','from-violet-400','via-violet-200','to-violet-100');
+              break;
+           case '/storage/menu/sports.webp':
+              ul.classList.add('md:bg-linear-to-br','from-blue-300','via-blue-200','to-blue-100')
+              break;
+            case '/storage/menu/society.webp':
+              ul.classList.add('md:bg-linear-to-br','from-green-400','via-green-200','to-green-100')
+              break;
+          }
     });
 </script>
 

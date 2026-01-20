@@ -14,7 +14,7 @@
             <div class="flex items-center justify-center">
                 <x-emptyPageShow/>
                 <p class="bg-gray-50 p-4 text-sm lg:text-2xl lg:bg-gray-300 text-gray-600 justify-center">
-                  Раздел находится в стадии заполнения контентом
+                  Раздел находится в стадии наполнения контентом
                 </p>
             </div>
           @endif

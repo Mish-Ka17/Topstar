@@ -1,5 +1,5 @@
  <!--Фильтр по стране -->
- <form method="POST" action="{{route('articles.index',[$chapter,$category])}}" class="flex items-center gap-4">
+<form method="POST" action="{{route('articles.index',[$chapter,$category])}}" class="flex items-center gap-4">
   @csrf
   <input type="hidden" name="country" value="{{ $countryselected }}" id="select-country-input">
   <div class="flex flex-col">
@@ -10,12 +10,12 @@
       <el-selectedcontent class="col-start-1 row-start-1 flex items-center gap-3 pr-6">
         <span class="block truncate">{{ $countrySelectedTitle }}</span>
       </el-selectedcontent>
-      <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true" class="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-400 sm:size-4">
+      <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true" class="col-start-1 row-start-1 size-5 self-center justify-self-end text-gray-800 sm:size-4">
         <path d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
       </svg>
     </button>
 
-    <el-options anchor="bottom start" popover class="max-h-56 w-(--button-width) overflow-auto rounded-md bg-gray-500 py-1 text-base outline-1 -outline-offset-1 outline-white/10 [--anchor-gap:--spacing(1)] data-leave:transition data-leave:transition-discrete data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm">
+    <el-options anchor="bottom start" popover class="max-h-56 w-(--button-width) overflow-auto rounded-md bg-gray-800 py-1 text-base outline-1 -outline-offset-1 outline-white/10 [--anchor-gap:--spacing(1)] data-leave:transition data-leave:transition-discrete data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm">
       <el-option value="" class="group/option relative block cursor-default pr-9 pl-3 text-white select-none focus:bg-indigo-500 focus:text-white focus:outline-hidden">
         <div class="flex items-center">
           <span class="block truncate font-normal group-aria-selected/option:font-semibold">Все страны</span>
@@ -43,7 +43,7 @@
 </div>
 </form>
 
- <script>
+<script>
   const selector = document.querySelector('#select-country');
   selector.addEventListener('change', () => {
     let selectedCountryInput = document.querySelector('#select-country-input');
@@ -55,5 +55,4 @@
       form.submit();
     }
   });
- </script>
-
+</script>

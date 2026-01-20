@@ -1,4 +1,4 @@
-<div class="relative flex items-center grow-1 justify-end mr-3">
+<div class="relative flex items-center grow-1 justify-end mr-2">
     <button
           id="search-toggle" title="Поиск по сайту"
           class="shrink-0 h-10 w-10 flex justify-center items-center rounded-md
@@ -26,9 +26,9 @@
             type="text"
             name="search"
             placeholder="Поиск по статьям…"
-            class="w-[100%] rounded-md border border-gray-300
+            class="w-[100%] mr-1 rounded-md border border-gray-100
                    bg-white px-2 py-2 text-sm
-                   shadow-lg focus:outline-none"
+                   shadow-lg focus:border-gray-600 focus:ring-1 focus:ring-gray-600 focus:outline-none"
         >
         <button
             id="search-button" title="Поиск по сайту"

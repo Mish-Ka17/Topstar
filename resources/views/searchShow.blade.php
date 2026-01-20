@@ -6,7 +6,11 @@
           @if($articles->count()==0)
             <div class="flex items-center justify-center">
                 <x-emptyPageShow/>
-                <p class="bg-gray-50 p-4 text-sm lg:text-2xl lg:bg-gray-300 text-gray-600 justify-center">
+                <p class="text-sm lg:text-2xl text-gray-600 justify-center
+                bg-gradient-to-br
+            from-indigo-200
+            via-gray-300
+            to-indigo-200 text-center p-6">
                   По запросу <span class="text-blue-700">"{{$search}}"</span> в заголовках статей ничего не найдено
                 </p>
             </div>
