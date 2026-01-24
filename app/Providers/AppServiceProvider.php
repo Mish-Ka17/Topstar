@@ -24,9 +24,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
          View::composer('*', function ($view) {
-        $view->with('menu', MenuService::getMenu());
-        $view->with('breadcrumbs', BreadcrumbsService::generate());
-
+            $view->with('menu', MenuService::getMenu());
+            $view->with('breadcrumbs', BreadcrumbsService::generate());
         });
         View::composer(['admin/articles/create','categoryShow','categoryShowCommon'],CreateArticleComposer::class);
     }

@@ -12,13 +12,19 @@ use Illuminate\Support\Facades\Cache;
 
 class MainController extends Controller
 {
-    public function index() //Chapter $chapter, Category $category)
+    public function index() //Главная страница Chapter $chapter, Category $category)
     {
+        $articles=Article::query()->where('nobel','2025')->orderBy('created_at')->get();
+
+        $articlesPhysics=$articles->where('category_id',11);
+        $articlesChemistry=$articles->where('category_id', 34);
+        $articlesMedicine=$articles->where('category_id',35);
+
         if(Auth::user()){
             $user=Auth::user();
-            return view('main',compact('user'));
+            return view('main',compact('user','articlesPhysics','articlesChemistry','articlesMedicine'));
         }
-        return view('main'); //,['chapter','category']); //'test-responsive'
+        return view('main',compact('articlesPhysics','articlesChemistry','articlesMedicine')); //,['chapter','category']); //'test-responsive'
     }
 
     public function categoryShow(Request $request,Chapter $chapter, Category $category)
@@ -42,7 +48,7 @@ class MainController extends Controller
         }
     }
 
-    public function search(Request $request)
+    public function search(Request $request) //Поиск по сайту
     {
       $search=$request->search;
       if($search=='')
@@ -58,4 +64,30 @@ class MainController extends Controller
         }
         return view('searchShow', compact('articles','search'));
     }
+
+    public function alphabetIndex(Request $request) //Алфавитный указатель
+    {//dd($request->letter);
+        $query = Article::query();
+
+        // Фильтр по букве
+        // if ($request->filled('letter')) {
+        //     $query->where('title', 'LIKE', $request->letter . '%');
+        // }
+        if ($request->filled('letter')) {
+            $query->whereRaw("
+                SUBSTRING_INDEX(title, ' ', -1) LIKE ?
+            ", [$request->letter.'%']);
+        }
+
+        // // Поиск по имени
+        // if ($request->filled('q')) {
+        //     $query->where('name', 'LIKE', '%' . $request->q . '%');
+        // }
+
+        $articles = $query->orderBy('title')->get(); //paginate(24);
+        $search=$request->letter;
+
+        return view('searchShow', compact('articles','search'));
+    }
+
 }
