@@ -87,6 +87,12 @@ class MainController extends Controller
         $articles = $query->orderBy('title')->get(); //paginate(24);
         $search=$request->letter;
 
+        if (Auth::user())
+        {
+          $user=Auth::user();
+          return view('searchShow', compact('articles','search','user'));
+        }
+
         return view('searchShow', compact('articles','search'));
     }
 

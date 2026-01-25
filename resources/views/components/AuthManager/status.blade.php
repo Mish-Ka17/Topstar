@@ -21,9 +21,9 @@
     @unless(isset($user))
     <div class="flex flex-row" id="auth-manager-status-actions-block-id">
       <el-dropdown class="flex flex-row">
-        <button type="button" data-context="login" data-modal-open="auth" class="w-full justify-center rounded-md mr-3 px-3 py-2 text-sm font-semibold text-gray-800 bg-blue-100 hover:bg-blue-400 hover:text-white cursor-pointer">
+        <button type="button" data-context="login" data-modal-open="auth" class="w-full justify-center rounded-md mr-1 px-2 py-1 text-sm font-semibold text-gray-800 bg-indigo-100 hover:bg-indigo-300 hover:text-white cursor-pointer">
           Войти</button>
-        <button type="button" data-context="registration" data-modal-open="auth" class="w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-gray-800 bg-blue-100 hover:bg-blue-400 hover:text-white cursor-pointer">
+        <button type="button" data-context="registration" data-modal-open="auth" class="w-full justify-center rounded-md px-2 py-1 text-sm font-semibold text-gray-800 bg-indigo-100 hover:bg-indigo-300 hover:text-white cursor-pointer">
           Регистрация</button>
       </el-dropdown>
      </div>

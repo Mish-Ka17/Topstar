@@ -34,8 +34,8 @@
       @endforeach
   </div>
 
-  <div class="flex h-[110px] items-center justify-between">
-    <div class="flex w-46 gap-4">
+  <div class="flex h-[110px]  items-center justify-between">
+    <div class="flex w-auto gap-4">
         <a href="{{route('home')}}">
           <div class="flex flex-col ml-7 mt-1">
             <div>
@@ -66,17 +66,18 @@
             </div>
           </div>
         </a>
-        <div>
+      </div>
+      <div class="absolute left-44 top-12">
           @if(isset($user))
             <x-user :$user/>
           @else
             <x-user/>
           @endif
-        </div>
-    </div>
+      </div>
+
 
     <div class="container relative w-auto">
-      <nav>
+      <nav class="ml-25">
           <!-- Кнопка для мобилки -->
         <button
             id="menuBtn"
@@ -149,10 +150,11 @@
         </ul>
       </nav>
     </div>
-
     <div class="flex w-46">
         <x-search/>
     </div>
+    </div>
+
   </div>
   </div>
 </header>

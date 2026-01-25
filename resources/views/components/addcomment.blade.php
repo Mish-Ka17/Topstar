@@ -8,7 +8,7 @@
               <div class="bg-gray-50 border rounded-lg p-4 text-sm text-gray-600">
                   <div class="flex p-2">
                       <div class="p-2">Чтобы оставить комментарий, пожалуйста, войдите или зарегистрируйтесь:</div>
-                      <div><x-AuthManager.status/></div>
+                      <div class="mt-1"><x-AuthManager.status/></div>
                   </div>
               </div>
               <br/>
