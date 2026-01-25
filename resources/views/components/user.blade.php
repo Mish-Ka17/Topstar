@@ -1,6 +1,6 @@
 <div class="relative">
   <button
-    id="user-toggle" title="Log in / Register"
+    id="user-toggle" title="Авторизация"
     class="shrink-0 h-8 w-8 flex justify-center rounded-md
             text-gray-600 hover:bg-gray-200 cursor-pointer"
     aria-label=""
@@ -15,9 +15,11 @@
   </button>
 
   @if(isset($user))
+    <div class="-ml-13">
       <x-AuthManager.status :$user/>
+    </div>
   @else
-    <div id="user-status" class="hidden mt-2 -ml-14">
+    <div id="user-status" class="hidden -ml-14">
       <x-AuthManager.status/>
     </div>
   @endif

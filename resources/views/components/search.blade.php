@@ -41,7 +41,7 @@
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="h-7 w-7">
+                    class="h-7 w-7 ">
                 <path stroke-linecap="round"
                         stroke-linejoin="round"
                         d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18a7.5 7.5 0 006.15-3.35z"/>
