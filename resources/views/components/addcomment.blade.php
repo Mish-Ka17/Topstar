@@ -6,7 +6,7 @@
             <!-- <p class="italic text-xs">(для зарегистрированых пользователей)</p> -->
             @if(!isset($user))
               <div class="bg-gray-50 border rounded-lg p-4 text-sm text-gray-600">
-                  <div class="flex p-2">
+                  <div class="flex-col sm:flex sm:flex-row p-2">
                       <div class="p-2">Чтобы оставить комментарий, пожалуйста, войдите или зарегистрируйтесь:</div>
                       <div class="mt-1"><x-AuthManager.status/></div>
                   </div>

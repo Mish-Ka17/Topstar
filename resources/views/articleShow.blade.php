@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section ('content')
     <x-breadcrumbs />
-    <article class="bg-gray-100 shadow-lg rounded-3xl p-6 sm:p-10 max-w-6xl mx-auto">
-        <header class="mb-8 text-center">
-            <h1 class="text-3xl sm:text-4xl font-bold text-gray-500 mb-3">{{ $title }}</h1>
+    <article class="bg-gray-200 shadow-lg rounded-xl p-2 sm:p-3 mb-4 max-w-6xl mx-auto">
+        <header class="mb-1 text-center">
+            <h1 class="text-2xl sm:text-3xl font-bold text-gray-600 mb-1">{{ $title }}</h1>
             <p class="text-gray-500 italic">{{$country}}</p>
         </header>
 
@@ -11,17 +11,17 @@
             @foreach ($content as $index=>$block)
 
                 @if ($block['type'] === 'heading')
-                    <p class="text-2xl sm:text-2xl font-bold text-gray-800 text-center mb-3">{{$block['text']}}</p>
+                    <p class="text-2xl sm:text-2xl font-bold text-gray-600 text-center mb-3">{{$block['text']}}</p>
                 @endif
 
                 @if ($block['type'] === 'paragraph')
-                    <p class="text-xl text-gray-500 indent-[2em] leading-relaxed text-justify mb-4">{{$block['text']}}</p>
+                    <p class="text-xl text-gray-600 indent-[1em] leading-relaxed text-justify mb-4">{{$block['text']}}</p>
                 @endif
 
                 @if ($block['type'] === 'image')
-                    <div class="float-{{$block['position']}} mr-7 my-3 ml-3
-                        bg-grey rounded-2xl shadow-lg overflow-hidden transform transition
-                        w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px]">
+                    <div class="float-{{$block['position']}} mr-2 my-1 ml-1
+                        bg-grey rounded-xl shadow-lg overflow-hidden transform transition
+                        w-[150px] h-[180px] md:w-[250px] md:h-[300px] lg:w-[300px] lg:h-[360px]">
                         <img src="{{$block['src']}}" alt="" class="w-full h-auto">
                         @if(!$loop->first)
                             <p class="p-3 text-sm sm:text-base md:text-lg text-gray-500 italic text-center">{{$block['caption']}}</p>

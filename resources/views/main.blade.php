@@ -2,219 +2,88 @@
 
 @section('content')
 <main>
+  <div class="mt-6 mb-8"> <!-- class="flex text-gray-700 py-4"-->
 
-{{-- <div class="flex justify-between">
-      <x-breadcrumbs />
-      <!-- <x-filtercountry :$countryselected :$countrySelectedTitle :$countries :$chapter :$category /> -->
-    </div>--}}
-
-    <section class="prose prose-lg max-w-none">
-        <!--  -->
-
-        <article class="bg-grey-200 shadow-lg rounded-3xl p-2 sm:p-1 max-w-8xl mx-auto">
-            <h1 class="text-sm sm:text-2xl font-bold text-gray-600 mb-3">Лауреаты Нобелевской премии 2025 года</h1>
-
-            <div class="flex justify-between my-8">
-                @php
-                  $articles=$articlesPhysics;
-                  $title=$articles->first()->category->title;
-                @endphp
-                <x-nobel-item :$articles :$title/>
-
-                @php
-                  $articles=$articlesChemistry;
-                  $title=$articles->first()->category->title;
-                @endphp
-                <x-nobel-item :$articles :$title/>
-
-                @php
-                  $articles=$articlesMedicine;
-                  $title=$articles->first()->category->title;
-                @endphp
-                <x-nobel-item :$articles :$title/>
-            </div>
-
-            <div class="flex justify-between my-8">
-                @php
-                  $articles=$articlesPhysics;
-                  $title=$articles->first()->category->title;
-                @endphp
-                <x-nobel-item :$articles :$title/>
-
-                @php
-                  $articles=$articlesChemistry;
-                  $title=$articles->first()->category->title;
-                @endphp
-                <x-nobel-item :$articles :$title/>
-
-                @php
-                  $articles=$articlesMedicine;
-                  $title=$articles->first()->category->title;
-                @endphp
-                <x-nobel-item :$articles :$title/>
-            </div>
-            <!-- -->
-
-{{--                <div class="justify-left w-auto gap-1 px-2">
-                    <h3 class="text-sm sm:text-2xl font-bold text-gray-600 mb-3">Химия</h3>
-                    <div class="flex flex-wrap justify-center gap-4 px-2">
-                        @foreach ($articlesChemistry as $article)
-
-                            @php
-                                $chapter=$article->category->chapter;
-                                $category=$article->category;
-                            @endphp
-
-                            @foreach ($article->content as $block)
-                                @if ($block['type'] === 'image')
-
-                            <div class="mx-2
-                                bg-grey rounded-sm shadow-lg overflow-hidden transform transition
-                                hover:-translate-y-2 hover:shadow-2xl hover:rotate-0
-                                w-[100px] sm:w-[50px] md:w-[80px] lg:w-[100px]
-                                h-[160px]
-                                ">
-                            <a href="{{route('article.show', [$chapter, $category, $article])}}">
-                                <img src="{{$block['src']}}" alt="{{$block['caption']}}" class="w-auto h-auto">
-                                <p class="p-1 text-sx text-gray-700 italic text-xs text-center">{{ $block['caption']}}</p>
-                            </a>
-                            </div>
-                                @break
-                                @endif
-                            @endforeach
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="justify-left w-auto gap-1 px-2">
-                    <h3 class="text-sm sm:text-2xl font-bold text-gray-600 mb-3">Физика</h3>
-                    <div class="flex flex-wrap justify-center gap-4 px-2">
-                        @foreach ($articlesFisics as $article)
-
-                            @php
-                                $chapter=$article->category->chapter;
-                                $category=$article->category;
-                            @endphp
-
-                            @foreach ($article->content as $block)
-                                @if ($block['type'] === 'image')
-
-                            <div class="mx-2
-                                bg-grey rounded-sm shadow-lg overflow-hidden transform transition
-                                hover:-translate-y-2 hover:shadow-2xl hover:rotate-0
-                                w-[100px] sm:w-[50px] md:w-[80px] lg:w-[100px]
-                                h-[160px]
-                                ">
-                            <a href="{{route('article.show', [$chapter, $category, $article])}}">
-                                <img src="{{$block['src']}}" alt="{{$block['caption']}}" class="w-auto h-auto">
-                                <p class="p-1 text-sx text-gray-700 italic text-xs text-center">{{ $block['caption']}}</p>
-                            </a>
-                            </div>
-                                @break
-                                @endif
-                            @endforeach
-                        @endforeach
-                    </div>
-                  </div>
+ {{--   <div class="flex hidden sm:block w-1/2">
+      @foreach ($articleMainPage->content as $index=>$block)
+        @if ($block['type'] === 'image')
+          <div class="aspect-4/3 mr-2">
+            <img src="{{$block['src']}}" alt="" class="w-full h-full object-fit">
           </div>
+        @endif
+        @if ($block['type'] === 'paragraph')
+          <p class="text-sm text-gray-500 indent-[1em] leading-relaxed text-center rounded-sm border border-t-0 border-r-0 border-l-0 border-indigo-400">{{$block['text']}}</p>
+        @endif
+      @endforeach
+    </div> --}}
 
-          <div class="flex">
-            <div class="justify-left w-auto gap-1 px-2">
-                    <h3 class="text-sm sm:text-2xl font-bold text-gray-600 mb-3">Физика</h3>
-                    <div class="flex flex-wrap justify-center gap-4 px-2">
-                        @foreach ($articlesFisics as $article)
+    <div class="justify-center gap-1">
+      <p class="text-xl font-light text-gray-900 mb-2">Из последних публикаций</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        @foreach ($articlesLatest as $article)
+          @php
+              $chapter=$article->category->chapter;
+              $category=$article->category;
+          @endphp
+          @foreach ($article->content as $block)
+              @if ($block['type'] === 'image')
 
-                            @php
-                                $chapter=$article->category->chapter;
-                                $category=$article->category;
-                            @endphp
+            <div class="
+              rounded-sm shadow-lg overflow-hidden transform transition
+              hover:-translate-y-2 hover:shadow-2xl hover:rotate-0
+              w-[100px] h-[140px] lg:w-[110px] lg:h-[160px]
+              ">
+              <a href="{{route('article.show', [$chapter, $category, $article])}}">
+                <img src="{{$block['src']}}" alt="{{$block['caption']}}" class="w-[100px] h-[120px] lg:w-[110px] lg:h-[132px]">
+                <p class="p-1 text-sx text-gray-700 italic text-xs text-center">{{ $block['caption']}}</p>
+              </a>
+            </div>
+            @break
+            @endif
+          @endforeach
+        @endforeach
+      </div>
+    </div>
+  </div>
 
-                            @foreach ($article->content as $block)
-                                @if ($block['type'] === 'image')
+  <h1 class="text-xl font-light text-gray-900">Лауреаты Нобелевской премии 2025 года</h1>
 
-                            <div class="mx-2
-                                bg-grey rounded-sm shadow-lg overflow-hidden transform transition
-                                hover:-translate-y-2 hover:shadow-2xl hover:rotate-0
-                                w-[100px] sm:w-[50px] md:w-[80px] lg:w-[100px]
-                                h-[160px]
-                                ">
-                            <a href="{{route('article.show', [$chapter, $category, $article])}}">
-                                <img src="{{$block['src']}}" alt="{{$block['caption']}}" class="w-auto h-auto">
-                                <p class="p-1 text-sx text-gray-700 italic text-xs text-center">{{ $block['caption']}}</p>
-                            </a>
-                            </div>
-                                @break
-                                @endif
-                            @endforeach
-                        @endforeach
-                    </div>
-                  </div>
+  <div class="flex flex-wrap justify-center my-1">
+      @php
+        $articles=$articlesPhysics;
+        $title=$articles->first()->category->title;
+      @endphp
+      <x-nobel-item :$articles :$title/>
 
-                <div class="justify-left w-auto gap-1 px-2">
-                    <h3 class="text-sm sm:text-2xl font-bold text-gray-600 mb-3">Физика</h3>
-                    <div class="flex flex-wrap justify-center gap-4 px-2">
-                        @foreach ($articlesFisics as $article)
+      @php
+        $articles=$articlesChemistry;
+        $title=$articles->first()->category->title;
+      @endphp
+      <x-nobel-item :$articles :$title/>
 
-                            @php
-                                $chapter=$article->category->chapter;
-                                $category=$article->category;
-                            @endphp
+      @php
+        $articles=$articlesMedicine;
+        $title=$articles->first()->category->title;
+      @endphp
+      <x-nobel-item :$articles :$title/>
 
-                            @foreach ($article->content as $block)
-                                @if ($block['type'] === 'image')
+      @php
+        $articles=$articlesPhysics;
+        $title=$articles->first()->category->title;
+      @endphp
+      <x-nobel-item :$articles :$title/>
 
-                            <div class="mx-2
-                                bg-grey rounded-sm shadow-lg overflow-hidden transform transition
-                                hover:-translate-y-2 hover:shadow-2xl hover:rotate-0
-                                w-[100px] sm:w-[50px] md:w-[80px] lg:w-[100px]
-                                h-[160px]
-                                ">
-                            <a href="{{route('article.show', [$chapter, $category, $article])}}">
-                                <img src="{{$block['src']}}" alt="{{$block['caption']}}" class="w-auto h-auto">
-                                <p class="p-1 text-sx text-gray-700 italic text-xs text-center">{{ $block['caption']}}</p>
-                            </a>
-                            </div>
-                                @break
-                                @endif
-                            @endforeach
-                        @endforeach
-                    </div>
-                  </div>
+      @php
+        $articles=$articlesChemistry;
+        $title=$articles->first()->category->title;
+      @endphp
+      <x-nobel-item :$articles :$title/>
 
-                  <div class="justify-left w-auto gap-1 px-2">
-                    <h3 class="text-sm sm:text-2xl font-bold text-gray-600 mb-3">Физика</h3>
-                    <div class="flex flex-wrap justify-center gap-4 px-2">
-                        @foreach ($articlesFisics as $article)
-
-                            @php
-                                $chapter=$article->category->chapter;
-                                $category=$article->category;
-                            @endphp
-
-                            @foreach ($article->content as $block)
-                                @if ($block['type'] === 'image')
-
-                            <div class="mx-2
-                                bg-grey rounded-sm shadow-lg overflow-hidden transform transition
-                                hover:-translate-y-2 hover:shadow-2xl hover:rotate-0
-                                w-[100px] sm:w-[50px] md:w-[80px] lg:w-[100px]
-                                h-[160px]
-                                ">
-                            <a href="{{route('article.show', [$chapter, $category, $article])}}">
-                                <img src="{{$block['src']}}" alt="{{$block['caption']}}" class="w-auto h-auto">
-                                <p class="p-1 text-sx text-gray-700 italic text-xs text-center">{{ $block['caption']}}</p>
-                            </a>
-                            </div>
-                                @break
-                                @endif
-                            @endforeach
-                        @endforeach
-                    </div>
-                  </div>
-          </div> --}}
-
-
-        </article>
-   </section>
+      @php
+        $articles=$articlesMedicine;
+        $title=$articles->first()->category->title;
+      @endphp
+      <x-nobel-item :$articles :$title/>
+  </div>
 </main>
 @endsection
