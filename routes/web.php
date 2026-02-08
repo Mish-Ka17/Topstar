@@ -49,6 +49,7 @@ Route::post('/filtercountry/{chapter}/{category}', '\App\Http\Controllers\Admin\
 Route::post('addcomment','\App\Http\Controllers\Admin\ArticleController@addcomment')->name('addcomment');
 
 Route::post('/get-views/auth', '\App\Http\Controllers\PartsHtmlController@getAuthViews')->name('get.auth.views');
+Route::post('/get-views/menu', '\App\Http\Controllers\PartsHtmlController@getMenuView')->name('get.menu.view');
 
 Route::get('/about', function () {
     return view('main');

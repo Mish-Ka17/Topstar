@@ -18,6 +18,7 @@
             via-gray-300
             to-indigo-300
             text-center p-2">
+<div id="mobile-menu-app"></div>
 
 <header class="sticky h-[120px] top-0 z-50 bg-linear-to-t from-gray-300 to-indigo-300 text-gray-700">
 
@@ -187,75 +188,79 @@
 </footer>
 
 <script>
-    menu=document.getElementById('menu');
+    // menu=document.getElementById('menu');
+
+    // document.getElementById('menuBtn').addEventListener('click', () => {
+    //   menu.classList.toggle('hidden');
+    // });
+
+    // //  Закрытие главного меню по клику вне пунктов меню
+    //     document.addEventListener('click', (e) => {
+    //     if (menu.contains(e.target)) {
+    //         menu.classList.add('hidden');
+
+    //      }
+    //     });
+
+    // const buttons = document.querySelectorAll('.menuBtn');
+
+    // buttons.forEach(button => {
+    //   button.addEventListener('click', (e) => {
+    //     e.stopPropagation();
+
+    //     const submenu = button.nextElementSibling;
+
+    //     // закрываем все остальные подменю
+    //     document.querySelectorAll('.submenu').forEach(menu => {
+    //       if (menu !== submenu) {
+    //         menu.classList.add('hidden');
+    //       }
+
+    //     });
+    //     // прокрутка к открытому пункту (не работает пока)
+    //     submenu.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    //     // переключаем текущее
+    //     submenu.classList.toggle('hidden');
+    //     submenu.classList.remove('absolute');
+
+    //     // Закрытие по клику вне
+    //     document.addEventListener('click', (e) => {
+    //     if (!submenu.contains(e.target)) {
+    //         submenu.classList.add('hidden');
+
+    //      }
+    // });
+
+
+    //   });
+    // });
+
+    // buttons.forEach(button => {
+    //     const imgPath = button.querySelector('img').getAttribute('src');
+    //     const ul = button.nextElementSibling;
+
+    //     switch(imgPath) {
+    //        case '/storage/menu/science.webp':
+    //           ul.classList.add('md:bg-linear-to-br','from-rose-400','via-rose-200','to-rose-100');//'bg-[length:200%_200%]','animate-pulse'
+    //           break;
+    //        case '/storage/menu/art.webp':
+    //           ul.classList.add('md:bg-linear-to-br','from-blue-400','via-blue-200','to-blue-100');
+    //           break;
+    //        case '/storage/menu/culture.webp':
+    //           ul.classList.add('md:bg-linear-to-br','from-violet-400','via-violet-200','to-violet-100');
+    //           break;
+    //        case '/storage/menu/sports.webp':
+    //           ul.classList.add('md:bg-linear-to-br','from-blue-300','via-blue-200','to-blue-100')
+    //           break;
+    //         case '/storage/menu/society.webp':
+    //           ul.classList.add('md:bg-linear-to-br','from-green-400','via-green-200','to-green-100')
+    //           break;
+    //       }
+    // });
 
     document.getElementById('menuBtn').addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
-
-    //  Закрытие главного меню по клику вне пунктов меню
-        document.addEventListener('click', (e) => {
-        if (menu.contains(e.target)) {
-            menu.classList.add('hidden');
-
-         }
-        });
-
-    const buttons = document.querySelectorAll('.menuBtn');
-
-    buttons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.stopPropagation();
-
-        const submenu = button.nextElementSibling;
-
-        // закрываем все остальные подменю
-        document.querySelectorAll('.submenu').forEach(menu => {
-          if (menu !== submenu) {
-            menu.classList.add('hidden');
-          }
-
-        });
-        // прокрутка к открытому пункту (не работает пока)
-        submenu.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-        // переключаем текущее
-        submenu.classList.toggle('hidden');
-        submenu.classList.remove('absolute');
-
-        // Закрытие по клику вне
-        document.addEventListener('click', (e) => {
-        if (!submenu.contains(e.target)) {
-            submenu.classList.add('hidden');
-
-         }
-    });
-
-
-      });
-    });
-
-    buttons.forEach(button => {
-        const imgPath = button.querySelector('img').getAttribute('src');
-        const ul = button.nextElementSibling;
-
-        switch(imgPath) {
-           case '/storage/menu/science.webp':
-              ul.classList.add('md:bg-linear-to-br','from-rose-400','via-rose-200','to-rose-100');//'bg-[length:200%_200%]','animate-pulse'
-              break;
-           case '/storage/menu/art.webp':
-              ul.classList.add('md:bg-linear-to-br','from-blue-400','via-blue-200','to-blue-100');
-              break;
-           case '/storage/menu/culture.webp':
-              ul.classList.add('md:bg-linear-to-br','from-violet-400','via-violet-200','to-violet-100');
-              break;
-           case '/storage/menu/sports.webp':
-              ul.classList.add('md:bg-linear-to-br','from-blue-300','via-blue-200','to-blue-100')
-              break;
-            case '/storage/menu/society.webp':
-              ul.classList.add('md:bg-linear-to-br','from-green-400','via-green-200','to-green-100')
-              break;
-          }
+      window.dispatchEvent(new CustomEvent('mobile-menu-toggle'));
     });
 </script>
 
