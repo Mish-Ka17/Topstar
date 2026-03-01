@@ -1,4 +1,4 @@
-<div class="p-4 bg-gray-100 rounded-lg shadow mb-4">
+<div class="p-4 bg-gray-100 rounded-lg shadow mb-4 text-left">
     <form action="{{route('addcomment',[$user,$articleid])}}" method="POST">
     @csrf
         <div>
@@ -13,14 +13,16 @@
               </div>
               <br/>
             @else
-              <input type="hidden" name="article_id" value="{{$articleid}}">
-              <textarea name="content" placeholder="Текст комментария" maxlength="50" class="w-full p-2 border">
+              <div>
+                <input type="hidden" name="article_id" value="{{$articleid}}">
+                <textarea name="content" placeholder="Текст комментария" maxlength="50" class="w-full p-2 border">
 
-              </textarea>
+                </textarea>
               </div>
               <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
                   Добавить
               </button>
             @endif
+        </div>
     </form>
 </div>

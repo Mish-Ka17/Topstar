@@ -6,6 +6,10 @@ use App\Models\Category;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\UserController;
 //use App\Http\Controllers\MainController;
+use App\Http\Controllers\SuggestionController;
+
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,10 +54,53 @@ Route::post('addcomment','\App\Http\Controllers\Admin\ArticleController@addcomme
 
 Route::post('/get-views/auth', '\App\Http\Controllers\PartsHtmlController@getAuthViews')->name('get.auth.views');
 
-Route::get('/about', function () {
+Route::get('about','\App\Http\Controllers\MainController@aboutProjectShow')->name('about');
+
+Route::get('form-suggestion','App\Http\Controllers\SuggestionController@index')->name('form.suggestion');
+
+Route::post('suggestion','App\Http\Controllers\SuggestionController@store')->name('store.suggestion');
+
+// Route::middleware(['auth'])->group(function(){
+
+//   Route::get('form-suggestion','App\Http\Controllers\SuggestionController@index')->name('form.suggestion');
+
+//   Route::post('suggestion','App\Http\Controllers\SuggestionController@store')->name('store.suggestion');
+// });
+
+Route::get('/aboutt', function () {
     return view('main');
 });
 Route::get('/test', function()
         {
-            return view('test-adaptive');
+            return redirect()->route('verification.notice'); //view('auth.verify-email'); //'test-adaptive'
 });
+
+//Auth::routes(['verify' => true]);
+
+Route::get('verify-email', function () {
+    return view('auth.verify-email');
+})->middleware(['auth'])->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    // return redirect('/')->with('success','Email verified');
+    return redirect(session('url_before_register'));//->with('success','successfully');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+  return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+Route::get('/test-mail', function () {
+    Mail::raw('Test mail from Persona', function ($message) {
+        $message->to('crovleff@yandex.ru')
+                ->subject('Test');
+    });
+
+    return 'Sent!';
+});
+

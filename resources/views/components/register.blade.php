@@ -32,11 +32,15 @@
 @unless(isset($user))
 
 <div class="flex flex-row">
-    <div id="buttons" class="flex flex-row w-30 h-10 justify-center gap-1 p-2  bg-indigo-100">
+    <div id="buttons" class="flex flex-row w-30 h-10 justify-center gap-1 p-2  bg-gray-300">
             <button type="button" onclick="Login()" class="border rounded px-1 py-0.5 text-[10px] hover:bg-indigo-200 cursor-pointer">Войти</button>
             <button type="button" onclick="Register()" class="border rounded px-1 py-0.5 text-[10px] hover:bg-indigo-200 cursor-pointer">Регистрация</button>
     </div>
 </div>
+
+@php
+  session(['url_before_register' => url()->previous()]);
+@endphp
 
 <div id="form">
     @if ($errors->any())
@@ -52,9 +56,13 @@
 
 <script>
     function Register() {
-        document.getElementById('buttons').style.display="none";
+        let activeComponent = 'register';
+        const buttons=document.getElementById('buttons');
+        // buttons.classList.remove('flex');
+        // buttons.classList.remove('flex-row');
+        // buttons.classList.add('hidden');
         document.getElementById('form').insertAdjacentHTML('beforeend', `
-                <form action="{{route('register')}}" method="POST" class="w-40 h-40 flex flex-col gap-1 p-2 float-right bg-white border rounded shadow">
+                <form id="register" action="{{route('register')}}" method="POST" class="w-40 h-40 flex flex-col gap-1 p-2 float-right bg-white border rounded shadow">
                 @csrf
                 <input
                 type="text"
@@ -88,12 +96,27 @@
                 </button>
             </form>
         `);
+
+        let register=document.getElementById('register'); //console.log(register);
+        document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+
+            register.classList.remove('flex');
+            register.classList.remove('flex-col');
+            register.classList.add('hidden');
+            // buttons.classList.remove('hidden');
+            // buttons.classList.add('flex');
+            // buttons.classList.add('flex-row');
+            };
+            //buttons.classList.add('flex')
+        });
+
     }
 
     function Login() {
         document.getElementById('buttons').style.display="none";
         document.getElementById('form').insertAdjacentHTML('beforeend', `
-                <form action="{{route('login')}}" method="POST" class="w-40 h-40 flex flex-col gap-1 p-2 float-right bg-white border rounded shadow">
+                <form action="{{route('login')}}" method="POST" class="w-45 h-23 flex flex-col gap-1 p-2 float-right bg-white border rounded shadow">
                 @csrf
                 <input
                 type="email"
@@ -116,6 +139,7 @@
             </form>
         `);
     }
+
 
 </script>
 

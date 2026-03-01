@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Chapter;
 use App\Models\Category;
 use App\Models\Article;
+use App\Models\Service_article;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -14,11 +15,12 @@ class MainController extends Controller
 {
   public function index() //Главная страница
   {
-    $query=Article::query(); //dd($query);
 
-    $articleMainPage=(clone $query)->where('nobel','2100')->orderBy('created_at','DESC')->first(); //текст главной
+    $aboutProject=Service_article::query()->where('order',1)->first();  //краткий текст "О нас"
 
-    $articlesLatest=(clone $query)->whereNull('nobel')->latest()->take(10)->get(); // последние 9 публикаций
+    $query=Article::query();
+
+    $articlesLatest=(clone $query)->whereNull('nobel')->latest()->take(10)->get(); // последние 10 публикаций (статей)
 
     $articles=(clone $query)->where('nobel','2025')->orderBy('created_at')->get(); //нобелевские лауреаты
 
@@ -28,9 +30,21 @@ class MainController extends Controller
 
     if(Auth::user()){
         $user=Auth::user();
-        return view('main',compact('user','articleMainPage','articlesLatest','articlesPhysics','articlesChemistry','articlesMedicine'));
+        return view('main',compact('user','aboutProject','articlesLatest','articlesPhysics','articlesChemistry','articlesMedicine'));
     }
-    return view('main',compact('articleMainPage', 'articlesLatest','articlesPhysics','articlesChemistry','articlesMedicine')); //,['chapter','category']); //'test-responsive'
+    return view('main',compact('aboutProject', 'articlesLatest','articlesPhysics','articlesChemistry','articlesMedicine')); //,['chapter','category']); //'test-responsive'
+  }
+
+  public function aboutProjectShow () // Cтраница "О нас" (about-project-show.blade.php) - полный текст
+  {
+    $aboutProjectShow=Service_article::query()->where('order',2)->first();
+
+    if(Auth::user()){
+        $user=Auth::user();
+        return view('about-project-show', compact('user','aboutProjectShow'));
+    }
+    return view('about-project-show', compact('aboutProjectShow'));
+
   }
 
   public function categoryShow(Request $request,Chapter $chapter, Category $category)
@@ -38,7 +52,7 @@ class MainController extends Controller
       $countryselected=$request->country;
       $countrySelectedTitle = '';
 
-      $user=Auth::user();//dd($user);
+      $user=Auth::user();
 
       $articles = Article::query()->where('category_id',$category->id)->get();
 

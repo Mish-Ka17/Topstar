@@ -1,8 +1,7 @@
 @extends ('layouts.app')
 
 @section('content')
-<main>
-  <div class="mt-6 mb-8"> <!-- class="flex text-gray-700 py-4"-->
+<div class="mt-1 mb-8">
 
  {{--   <div class="flex hidden sm:block w-1/2">
       @foreach ($articleMainPage->content as $index=>$block)
@@ -17,8 +16,9 @@
       @endforeach
     </div> --}}
 
-    <div class="justify-center gap-1">
-      <p class="text-xl font-light text-gray-900 mb-2">Из последних публикаций</p>
+    <x-about-project :$aboutProject/>
+
+      <p class="text-xl font-light text-gray-900 my-4">Из последних публикаций</p>
       <div class="flex flex-wrap justify-center gap-4">
         @foreach ($articlesLatest as $article)
           @php
@@ -43,10 +43,8 @@
           @endforeach
         @endforeach
       </div>
-    </div>
-  </div>
 
-  <h1 class="text-xl font-light text-gray-900">Лауреаты Нобелевской премии 2025 года</h1>
+  <h1 class="text-xl font-light text-gray-900 mt-6">Лауреаты Нобелевской премии 2025 года</h1>
 
   <div class="flex flex-wrap justify-center my-1">
       @php
@@ -85,5 +83,45 @@
       @endphp
       <x-nobel-item :$articles :$title/>
   </div>
-</main>
+</div>
+
+<script>
+
+  const contentAboutProject=document.getElementById('contentAboutProject');
+  const chevronDown=document.getElementById('chevronDown');
+  const ellipsis=document.getElementById('ellipsis');
+
+  document.getElementById('aboutProject').addEventListener('click', ()=>{
+    contentAboutProject.classList.toggle('hidden');
+    chevronDown.classList.add('hidden');
+    ellipsis.classList.toggle('hidden');
+    document.getElementById('oproject').classList.remove('bg-gray-300');
+    document.getElementById('oproject').classList.add('bg-gray-200');
+  });
+
+  //закрытие по клику вне
+  document.addEventListener('click', (e)=>{
+      if (!document.getElementById('aboutProject').contains(e.target)) {
+            contentAboutProject.classList.add('hidden');
+            ellipsis.classList.add('hidden');
+            chevronDown.classList.remove('hidden');
+            document.getElementById('oproject').classList.add('bg-gray-300');
+        };
+      if (document.getElementById('contentAboutProject').contains(e.target)) {
+            contentAboutProject.classList.add('hidden');
+            ellipsis.classList.add('hidden');
+            chevronDown.classList.remove('hidden');
+            document.getElementById('oproject').classList.add('bg-gray-300');
+        };
+      if (document.getElementById('ellipsis').contains(e.target)) {
+            contentAboutProject.classList.add('hidden');
+            ellipsis.classList.add('hidden');
+            chevronDown.classList.remove('hidden');
+            document.getElementById('oproject').classList.add('bg-gray-300');
+        };
+
+        //chevronDown.classList.remove('hidden');
+      });
+
+</script>
 @endsection

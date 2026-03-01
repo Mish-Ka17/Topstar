@@ -2,7 +2,7 @@
   <button
     id="user-toggle" title="Авторизация"
     class="shrink-0 h-8 w-8 flex justify-center rounded-md
-            text-gray-600 hover:bg-gray-200 cursor-pointer"
+            text-gray-800 hover:bg-gray-300 cursor-pointer"
     aria-label=""
   >
     <div class="self-center">
@@ -16,23 +16,26 @@
 
   @if(isset($user))
     <div class="-ml-13">
-      <x-AuthManager.status :$user/>
+      <x-register :$user/> {{--<x-AuthManager.status :$user/>--}}
     </div>
   @else
     <div id="user-status" class="hidden -ml-14">
-      <x-AuthManager.status/>
+      <x-register/> {{--<x-AuthManager.status/>--}}
     </div>
   @endif
 
 </div>
 
 <script>
+    let activeComponent = 'user';
     const user = document.getElementById('user-toggle');
     const status = document.getElementById('user-status');
+    //let register=document.getElementById('register');
     // const input = form.querySelector('input');
 
     user.addEventListener('click', () => {
-        status.classList.toggle('hidden');
+        status.classList.remove('hidden');console.log(activeComponent);
+        //status.classList.add('block');
         // toggle.classList.add('hidden');
         // if (!form.classList.contains('hidden')) {
         //     input.focus();
@@ -42,9 +45,11 @@
     //Закрытие по Esc
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            status.classList.add('hidden');
+            if (activeComponent = 'user')
+              status.classList.add('hidden');
+            //register.classList.add('hidden');
             // toggle.classList.remove('hidden');
-            // toggle.classList.add('block');
+            console.log(activeComponent);// toggle.classList.add('block');console.log(activeComponent);
         }
     });
 

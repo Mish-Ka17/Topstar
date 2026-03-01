@@ -1,5 +1,5 @@
 <div class="w-full sm:w-1/2 lg:w-1/3 mt-4 px-2">
-    <h2 class="text-xl font-light text-gray-500 mb-3">{{$title}}</h2>
+    <h2 class="text-xl font-light text-gray-900 mb-3">{{$title}}</h2>
     <div class="flex flex-wrap justify-center">
         @foreach ($articles as $article)
 
@@ -27,7 +27,7 @@
             @endforeach
         @endforeach
     </div>
-    <div class="bg-gray-300 text-sm text-gray-800 italic text-center p-1 my-2">
+    <div class="bg-gray-200 text-sm text-gray-900 text-center p-1 my-2">
       {{$remarks}}
     </div>
 </div>

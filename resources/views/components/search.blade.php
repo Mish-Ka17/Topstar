@@ -2,7 +2,7 @@
     <button
           id="search-toggle" title="Поиск по сайту"
           class="shrink-0 h-10 w-10 flex justify-center items-center rounded-md
-                  text-gray-600 hover:bg-gray-200 cursor-pointer"
+                  text-gray-600 hover:bg-indigo-200 cursor-pointer"
           aria-label="Открыть поиск"
       >
           <svg xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@
         <button
             id="search-button" title="Поиск по сайту"
             class="shrink-0 h-10 w-10 flex justify-center items-center rounded-md
-                    text-gray-600 hover:bg-gray-200 cursor-pointer"
+                    text-gray-600 hover:bg-indigo-200 cursor-pointer"
             aria-label="Открыть поиск"
         >
             <svg xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,6 @@
             </svg>
         </button>
     </form>
-
 </div>
 
 <script>

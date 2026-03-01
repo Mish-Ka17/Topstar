@@ -5,7 +5,7 @@
       <div class="flex items-center justify-center">
           <x-emptyPageShow/>
           <p class="text-md lg:text-2xl text-gray-600 bg-gray-300 p-1">
-            Запрос: буква <span class="text-blue-700">"{{$search}}"</span> - ничего не найдено
+            По запросу<span class="text-blue-700">"{{$search}}"</span>&nbsp;ничего не найдено
           </p>
       </div>
     @else
@@ -21,7 +21,7 @@
                 $category=$items[0]->category;
                 $category_title=$items[0]->category->title;
               @endphp
-              <div class="flex flex-col w-[250px]">
+              <div class="flex flex-col w-[230px]">
                 <div class="text-lg italic underline text-left">
                   <a href="{{ route('category.show', [$chapter, $category]) }}"
                      class="block px-2 py-1 text-indigo-500
@@ -38,7 +38,7 @@
                   <div class="text-lg text-gray-800 text-left">
                   <a href="{{route('article.show', [$chapter, $category, $article])}}" class="block px-2 py-1 text-gray-900
                      hover:bg-indigo-200 hover:text-indigo-800">
-                    {{$article->title}}
+                    {{$article->title_reversed}}
                   </a>
                   </div>
                 @endforeach

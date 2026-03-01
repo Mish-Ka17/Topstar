@@ -3,21 +3,20 @@
 @section ('content')
   <div class="flex flex-col justify-between sm:flex-row">
     <x-breadcrumbs />
-    <div class="">
+    <div>
       <x-filtercountry :$countryselected :$countrySelectedTitle :$countries :$chapter :$category />
     </div>
   </div>
   <h1 class="text-xl sm:text-2xl font-bold text-gray-600 my-6">{{$category->title}}</h1>
   @if($articles->count()==0)
     <div class="flex items-center justify-center">
-        <x-emptyPageShow/>
-        <p class="bg-gray-50 p-2 text-sm lg:text-2xl lg:bg-gray-300 text-gray-600 justify-center">
-          Раздел находится в стадии наполнения контентом
-        </p>
+      <x-emptyPageShow/>
+      <p class="bg-gray-50 p-2 text-sm lg:text-2xl lg:bg-gray-300 text-gray-600 justify-center">
+        Раздел находится в стадии наполнения контентом
+      </p>
     </div>
-  @endif
+  @else
   <div class="justify-left gap-1 px-2 mb-8">
-
     <div class="flex flex-wrap justify-center gap-4">
         @foreach ($articles as $article)
             @foreach ($article->content as $block)
@@ -39,4 +38,5 @@
         @endforeach
     </div>
   </div>
+  @endif
 @endsection

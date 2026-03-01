@@ -5,32 +5,38 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
     public function register(Request $request)
-    {// $data = $request->validate([
-    //         'name'=>['required','string','max:255'],
-    //         'email'=>['required','email','max:255','unique:users'],
-    //         'password'=>['required','confirmed'],
-    //     ]); dd($data);
-
-         if($request->validate([
+    {
+         $data=$request->validate([
              'name'=>['required','string','max:255'],
              'email'=>['required','string','email','max:255','unique:users'],
              'password'=>['required','string','max:8','confirmed'],
-         ]))
-         {
-            $user=User::create($request->all());
+         ]);
+
+            $user=User::create([
+              'name'=>$data['name'],
+              'email'=>$data['email'],
+              'password'=>bcrypt($data['password'])
+            ]);
+
+            //Вызов события регистрации пользователя (для отправки ему на емеил ссылки для подтверждения)
+            event(new Registered($user));
 
             // Логиним сразу после регистрации
             Auth::login($user);
-
-            return back();
-            //return redirect()->route('home');//'view('main');)
-         };
+// dd($user->email);
+          return redirect()->route('verification.notice');
+//dd($user);
+            //  return  view('auth.verify-email');
+        //return back();
+            // return redirect()->route('verification.notice');
+            //return redirect()->route('verification.notice');//->with('success','Успешная регистрация');//'view('main');)
     }
 
     public function login(Request $request)
@@ -55,9 +61,9 @@ class UserController extends Controller
         );
       }
 
-      $request->session()->regenerate();
+      //$request->session()->regenerate();
 
-      return back();
+      return redirect()->intended();//back();
     }
 
     public function logout(Request $request)

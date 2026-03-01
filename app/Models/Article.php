@@ -39,4 +39,18 @@ class Article extends Model
         }
         return $query;
     }
+
+    public function getTitleReversedAttribute(): string
+    {
+        $parts = preg_split('/\s+/', trim($this->title));
+
+      if (count($parts) < 2) {
+          return $this->title;
+      }
+
+      $lastName = array_pop($parts);
+
+      return $lastName . ' ' . implode(' ', $parts);
+    }
+
 }

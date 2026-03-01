@@ -3,7 +3,7 @@
 @section ('content')
 <div class="flex flex-col justify-between sm:flex-row">
   <x-breadcrumbs />
-  <div class="">
+  <div>
     <x-filtercountry :$countryselected :$countrySelectedTitle :$countries :$chapter :$category />
   </div>
 </div>
@@ -16,7 +16,7 @@
       Раздел находится в стадии наполнения контентом
     </p>
   </div>
-@endif
+@else
       <!--Игроки -->
 <div class="justify-left gap-1 px-2 mb-8">
   <div class="flex flex-wrap justify-center gap-4">
@@ -61,4 +61,5 @@
     @endforeach
   </div>
 </div>
+@endif
 @endsection
