@@ -30,7 +30,7 @@
         v-model="password"
         type="password"
         name="password"
-        placeholder="Введите пароль"
+        placeholder="Введите пароль: до 8-ми символов"
         class="border rounded px-2 py-2 text-[14px] focus:outline-none focus:ring-1 focus:ring-blue-400"
       />
 

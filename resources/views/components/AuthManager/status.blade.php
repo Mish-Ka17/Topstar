@@ -1,7 +1,7 @@
 <div class="w-full">
     @isset($user)
       <el-dropdown class="inline-block">
-        <button class="inline-flex w-full justify-center gap-x-1.5 lg:px-2 lg:py-1 bg-gray-300 text-xs lg:text-sm font-semibold text-gray-600 hover:bg-white/20 cursor-pointer"
+        <button class="inline-flex w-full justify-center gap-x-1.5 lg:px-2 lg:py-1 bg-indigo-200 text-xs lg:text-sm font-semibold text-gray-800 hover:bg-indigo-300 cursor-pointer"
         title="{{$user->name}}">
         {{$user->name}}
           <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="-mr-1 size-5 text-gray-600">
@@ -9,10 +9,10 @@
           </svg>
         </button>
 
-        <el-menu anchor="bottom end" popover class="origin-top-right text-gray-600 bg-gray-300 outline-1 -outline-offset-1 outline-white/10 transition transition-discrete data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
+        <el-menu anchor="bottom end" popover class="origin-top-right text-gray-800 bg-indigo-200 outline-1 -outline-offset-1 outline-white/10 transition transition-discrete data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
           <div class="py-1 flex flex-col">
             <span class="px-2 py-0.5">{{$user->email}}</span>
-            <a href="{{route('logout')}}" class="mx-1 px-1 py-0.5 hover:bg-gray-400 cursor-pointer">Выйти</a>
+            <a href="{{route('logout')}}" class="mx-1 px-1 py-0.5 hover:bg-indigo-300 cursor-pointer">Выйти</a>
           </div>
         </el-menu>
       </el-dropdown>
@@ -21,9 +21,9 @@
     @unless(isset($user))
     <div class="flex flex-row" id="auth-manager-status-actions-block-id">
       <el-dropdown class="flex flex-row">
-        <button type="button" data-context="login" data-modal-open="auth" class="w-12 lg:w-full mt-8 lg:mt-0 justify-center rounded-md mr-1 px-2 py-1 text-xs lg:text-sm font-semibold text-gray-500 bg-indigo-100 hover:bg-indigo-300 hover:text-white cursor-pointer">
+        <button type="button" data-context="login" data-modal-open="auth" class="w-12 lg:w-full mt-8 lg:mt-0 justify-center rounded-md mr-1 px-2 py-1 text-xs lg:text-sm text-gray-800 bg-indigo-200 hover:bg-indigo-300 hover:text-white cursor-pointer">
           Войти</button>
-        <button type="button" data-context="registration" data-modal-open="auth" class="w-22 lg:w-full mt-8 lg:mt-0 justify-center rounded-md px-2 py-1 text-xs lg:text-sm font-semibold text-gray-500 bg-indigo-100 hover:bg-indigo-300 hover:text-white cursor-pointer">
+        <button type="button" data-context="registration" data-modal-open="auth" class="w-22 lg:w-full mt-8 lg:mt-0 justify-center rounded-md px-2 py-1 text-xs lg:text-sm text-gray-800 bg-indigo-200 hover:bg-indigo-300 hover:text-white cursor-pointer">
           Регистрация</button>
       </el-dropdown>
      </div>

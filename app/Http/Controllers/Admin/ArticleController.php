@@ -94,7 +94,7 @@ class ArticleController extends Controller
     }
 
     // Фильтр по стране
-     public function index(Request $request, Chapter $chapter, Category $category)
+    public function index(Request $request, Chapter $chapter, Category $category)
     {
         $user=Auth::user();
         if(!$request->country==''){
@@ -127,7 +127,7 @@ class ArticleController extends Controller
         //Отслеживаем id выбранной страны (для фильтра по стране, чтобы выбор страны
         // сохранялся при обновлении страницы):
 
-     }
+    }
 
     public function addcomment(Request $request)
     {
@@ -159,7 +159,6 @@ class ArticleController extends Controller
              'category' => 'required',
          ]);
 
-//dd($validated); //['images']);
          $article = Article::create([
              'category_id' => $validated['category'], //$request->category,
              'title'   => $validated['title'],
@@ -208,21 +207,21 @@ class ArticleController extends Controller
             if (!$image) return '';
 
             return "<div class='my-6'>
-                        <p>
-                        <img src='".asset('storage/'.$image->path)."'
-                            alt=''
-                            class='float-left mr-5 mb-3 rounded-xl shadow-md w-72 h-auto object-cover'>
+                <p>
+                <img src='".asset('storage/'.$image->path)."'
+                    alt=''
+                    class='float-left mr-5 mb-3 rounded-xl shadow-md w-72 h-auto object-cover'>
 
-                        <form method='POST' action=''>
-                            <label class='block mb-2 font-semibold'>Подпись</label>
-                            <input type='text' name='caption' class='w-full border rounded p-2'>
-                            <button type='submit'
-                                class='bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded transition'>
-                                Сохранить подпись
-                            </button>
-                        </form>
-                        </p>
-                    </div>";
+                <form method='POST' action=''>
+                    <label class='block mb-2 font-semibold'>Подпись</label>
+                    <input type='text' name='caption' class='w-full border rounded p-2'>
+                    <button type='submit'
+                        class='bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded transition'>
+                        Сохранить подпись
+                    </button>
+                </form>
+                </p>
+            </div>";
         }, $text);
 //dd($text.'weqweqw');
         return $text;

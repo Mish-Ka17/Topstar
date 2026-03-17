@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -21,13 +22,24 @@ class Handler extends ExceptionHandler
     /**
      * Register the exception handling callbacks for the application.
      */
+    // public function register(): void
+    // {
+    //     $this->reportable(function (Throwable $e) {
+    //         //
+    //     });
+    // }
+
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
-    }
+    $this->renderable(function (TooManyRequestsHttpException $e, $request) {
 
+        return redirect()->back()->with(
+            'error',
+            'Слишком много запросов. Попробуйте через минуту.'
+        );
+
+    });
+    }
     // protected function unauthenticated($request, AuthenticationException $exception)
     // {
     //     return redirect()->guest(route('login'))

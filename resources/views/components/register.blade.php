@@ -56,13 +56,14 @@
 
 <script>
     function Register() {
-        let activeComponent = 'register';
+        let isRegisterOpen = true;
+        //let isStatusOpen=false;
         const buttons=document.getElementById('buttons');
-        // buttons.classList.remove('flex');
-        // buttons.classList.remove('flex-row');
-        // buttons.classList.add('hidden');
-        document.getElementById('form').insertAdjacentHTML('beforeend', `
-                <form id="register" action="{{route('register')}}" method="POST" class="w-40 h-40 flex flex-col gap-1 p-2 float-right bg-white border rounded shadow">
+        const form=document.getElementById('form');
+
+        buttons.classList.add('hidden');
+        form.insertAdjacentHTML('beforeend', `
+                <form action="{{route('register')}}" method="POST" class="w-40 h-40 flex flex-col gap-1 p-2 float-right bg-white border rounded shadow">
                 @csrf
                 <input
                 type="text"
@@ -97,18 +98,17 @@
             </form>
         `);
 
-        let register=document.getElementById('register'); //console.log(register);
+         //console.log(register);
         document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
+        if (e.key === 'Escape' && isRegisterOpen) {
 
-            register.classList.remove('flex');
-            register.classList.remove('flex-col');
-            register.classList.add('hidden');
-            // buttons.classList.remove('hidden');
-            // buttons.classList.add('flex');
-            // buttons.classList.add('flex-row');
+            // form.classList.remove('flex');
+            // form.classList.remove('flex-col');
+            form.classList.add('hidden');
+            buttons.classList.remove('hidden');
+            isRegisterOpen=false;
             };
-            //buttons.classList.add('flex')
+
         });
 
     }

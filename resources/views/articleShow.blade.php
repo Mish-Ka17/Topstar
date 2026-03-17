@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section ('content')
     <x-breadcrumbs />
-    <article class="bg-gray-50 shadow-lg rounded-xl p-2 sm:p-6 mb-4 max-w-4xl mx-auto">
+    <article class="bg-gray-50 shadow-lg rounded-xl p-2 sm:p-6 mb-8 max-w-4xl mx-auto">
     <header class="mb-1 text-center">
         <h1 class="text-2xl sm:text-3xl font-sans text-gray-600 mb-1">{{ $title }}</h1>
         <p class="text-gray-500 italic">{{$country}}</p>

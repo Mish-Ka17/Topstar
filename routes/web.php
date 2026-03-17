@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function(){
 });
 Route::post('register', 'App\Http\Controllers\UserController@register')->name('register');
 
-Route::post('login', 'App\Http\Controllers\UserController@login')->name('login');
+Route::post('login', 'App\Http\Controllers\UserController@login')->name('login')->middleware('throttle:2,1');
 
 Route::get('logout','App\Http\Controllers\UserController@logout')->name('logout');
 
@@ -50,15 +50,17 @@ Route::get('/{chapter}/{category}', 'App\Http\Controllers\MainController@categor
 
 Route::post('/filtercountry/{chapter}/{category}', '\App\Http\Controllers\Admin\ArticleController@index')->name('articles.index');
 
-Route::post('addcomment','\App\Http\Controllers\Admin\ArticleController@addcomment')->name('addcomment');
+Route::post('addcomment','\App\Http\Controllers\Admin\ArticleController@addcomment')->name('addcomment')->middleware('throttle:5,60');
 
 Route::post('/get-views/auth', '\App\Http\Controllers\PartsHtmlController@getAuthViews')->name('get.auth.views');
 
 Route::get('about','\App\Http\Controllers\MainController@aboutProjectShow')->name('about');
 
-Route::get('form-suggestion','App\Http\Controllers\SuggestionController@index')->name('form.suggestion');
+Route::get('form-suggestion','App\Http\Controllers\SuggestionController@index')->name('form.suggestion');//->middleware('throttle:2,1');
 
-Route::post('suggestion','App\Http\Controllers\SuggestionController@store')->name('store.suggestion');
+Route::post('suggestion','App\Http\Controllers\SuggestionController@store')->name('store.suggestion')->middleware('throttle:2,60');
+
+// Route::get('exit-suggestion', 'App\Http\Controllers\SuggestionController@exit')->name('exit.suggestion');
 
 // Route::middleware(['auth'])->group(function(){
 

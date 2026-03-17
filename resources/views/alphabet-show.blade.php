@@ -9,7 +9,7 @@
           </p>
       </div>
     @else
-      <article class="bg-grey-200 rounded-xl p-2 sm:p-1 mx-auto text-center">
+      <article class="bg-gray-50 shadow-lg rounded-xl p-2 sm:p-6 my-10 mx-auto max-w-6xl justify-center">
         <p class="text-xl text-gray-600 justify-center my-4">
             Запрос: буква <span class="text-blue-700">"{{$search}}"</span>:
         </p>
@@ -22,10 +22,10 @@
                 $category_title=$items[0]->category->title;
               @endphp
               <div class="flex flex-col w-[230px]">
-                <div class="text-lg italic underline text-left">
+                <div class="text-lg underline text-left">
                   <a href="{{ route('category.show', [$chapter, $category]) }}"
-                     class="block px-2 py-1 text-indigo-500
-                     hover:bg-indigo-200 hover:text-indigo-800"
+                     class="block px-2 py-1 text-gray-800
+                     hover:bg-indigo-100"
                   >
                     {{ $category_title }}
                   </a>
@@ -36,8 +36,8 @@
                     $category=$article->category;
                   @endphp
                   <div class="text-lg text-gray-800 text-left">
-                  <a href="{{route('article.show', [$chapter, $category, $article])}}" class="block px-2 py-1 text-gray-900
-                     hover:bg-indigo-200 hover:text-indigo-800">
+                  <a href="{{route('article.show', [$chapter, $category, $article])}}" class="block px-2 py-1
+                     hover:bg-indigo-100">
                     {{$article->title_reversed}}
                   </a>
                   </div>

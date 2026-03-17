@@ -2,7 +2,7 @@
   <button
     id="user-toggle" title="Авторизация"
     class="shrink-0 h-8 w-8 flex justify-center rounded-md
-            text-gray-800 hover:bg-gray-300 cursor-pointer"
+            text-gray-800 hover:bg-indigo-200 cursor-pointer"
     aria-label=""
   >
     <div class="self-center">
@@ -16,47 +16,48 @@
 
   @if(isset($user))
     <div class="-ml-13">
-      <x-register :$user/> {{--<x-AuthManager.status :$user/>--}}
+      <x-AuthManager.status :$user/> {{--<x-register :$user/>--}}
     </div>
   @else
     <div id="user-status" class="hidden -ml-14">
-      <x-register/> {{--<x-AuthManager.status/>--}}
+      <x-AuthManager.status/> {{--<x-register/>--}}
     </div>
   @endif
 
 </div>
 
 <script>
-    let activeComponent = 'user';
+
     const user = document.getElementById('user-toggle');
     const status = document.getElementById('user-status');
     //let register=document.getElementById('register');
     // const input = form.querySelector('input');
+    let isStatusOpen=false;
+    // let isRegisterOpen=false;
 
     user.addEventListener('click', () => {
-        status.classList.remove('hidden');console.log(activeComponent);
-        //status.classList.add('block');
-        // toggle.classList.add('hidden');
-        // if (!form.classList.contains('hidden')) {
-        //     input.focus();
-        // }
+
+        status.classList.remove('hidden');//console.log(status.classList);
+        isStatusOpen=true;
+
+
     });
 
     //Закрытие по Esc
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            if (activeComponent = 'user')
-              status.classList.add('hidden');
-            //register.classList.add('hidden');
-            // toggle.classList.remove('hidden');
-            console.log(activeComponent);// toggle.classList.add('block');console.log(activeComponent);
-        }
+        if (e.key === 'Escape' && isStatusOpen) {
+            status.classList.add('hidden');
+            isStatusrOpen=false;
+            user.blur();//console.log(status);
+            }
     });
 
     // Закрытие по клику вне
     document.addEventListener('click', (e) => {
-         if (!user.contains(e.target) && !status.contains(e.target)) {
+         if (!user.contains(e.target) && !status.contains(e.target) && isStatusOpen) {
             status.classList.add('hidden');
+            isStatusrOpen=false;
+            // console.log(status.classList);
             // toggle.classList.remove('hidden');
             // toggle.classList.add('block');
          }

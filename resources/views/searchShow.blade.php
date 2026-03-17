@@ -6,12 +6,12 @@
   <div class="flex items-center justify-center">
       <x-emptyPageShow/>
       <p class="text-sm lg:text-2xl text-gray-600 bg-gray-300 p-1">
-        По запросу <span class="text-blue-700">"{{$search}}"</span> в заголовках статей ничего не найдено
+        По запросу&nbsp;<span class="text-blue-700">"{{$search}}"</span> в заголовках статей ничего не найдено
       </p>
   </div>
 @else
   <p class="bg-gray-300 p-2 text-md lg:text-2xl text-gray-600">
-    По запросу <span class="text-blue-700">"{{$search}}"</span> найдено статей: <span class="text-blue-700">{{$articles->count()}}</span>
+    По запросу&nbsp;<span class="text-blue-700">"{{$search}}"</span> найдено статей: <span class="text-blue-700">{{$articles->count()}}</span>
   </p>
 
               <div class="justify-left gap-1 px-2 mt-4">

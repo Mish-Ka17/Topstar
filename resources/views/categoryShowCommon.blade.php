@@ -11,7 +11,7 @@
   @if($articles->count()==0)
     <div class="flex items-center justify-center">
       <x-emptyPageShow/>
-      <p class="bg-gray-50 p-2 text-sm lg:text-2xl lg:bg-gray-300 text-gray-600 justify-center">
+      <p class="p-2 text-sm lg:text-2xl text-gray-600 justify-center">
         Раздел находится в стадии наполнения контентом
       </p>
     </div>
