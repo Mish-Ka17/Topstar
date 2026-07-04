@@ -3,4 +3,4 @@
 ## О проекте Topstar
 
 Проект Topstar - полнофункциональный сайт "Личности в истории и лица среди нас".
-Стэк: Laravel+Vite+Vue.js+TailwindCSS.
+<p>Стэк: Laravel+Vite+Vue.js+TailwindCSS.</p>
